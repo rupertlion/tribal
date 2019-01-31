@@ -14,11 +14,10 @@ class Devise::SessionsController < DeviseController
     def create
       if warden.authenticate
         self.resource = warden.authenticate!(auth_options)
-          set_flash_message!(:notice, :signed_in)
-          sign_in(resource_name, resource)
-          yield resource if block_given?
-          respond_with resource, location: after_sign_in_path_for(resource)
-        
+        set_flash_message!(:notice, :signed_in)
+        sign_in(resource_name, resource)
+        yield resource if block_given?
+        respond_with resource, location: after_sign_in_path_for(resource)
       else
         render json: {errors: "Invalid Email or password."}
       end
@@ -28,7 +27,7 @@ class Devise::SessionsController < DeviseController
       signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
       set_flash_message! :notice, :signed_out if signed_out
       yield if block_given?
-      respond_to_on_destroy
+      # respond_to_on_destroy
     end
   
     protected

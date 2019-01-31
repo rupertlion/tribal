@@ -1,6 +1,8 @@
 import React from "react";
 import AllSessions from "./AllSessions";
 import { NavLink, Link } from 'react-router-dom'
+
+const axios = require("axios");
 export default class Main extends React.Component {
 	constructor(props) {
 		super(props);
@@ -10,6 +12,7 @@ export default class Main extends React.Component {
 			fullSessions: props.sessions.fullSessions,
 			user: props.sessions.user
 		};
+		this.logout = this.logout.bind(this)
 	}
 
 	componentWillMount() {
@@ -19,6 +22,42 @@ export default class Main extends React.Component {
 			fullSessions: this.props.sessions.fullSessions,
 			user: this.props.sessions.user
 		})
+	}
+
+	logout() {
+		event.preventDefault();
+		const csrfToken = ReactOnRails.authenticityToken();
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+				"X-CSRF-Token": csrfToken
+			}
+		};
+		axios.delete(
+			"/users/sign_out", config
+		).then((response) => {
+			document.location.href = "/";
+		}).catch(function (error) {
+			console.log(error);
+		})
+
+		// axios
+		// 	.delete("/users/sign_out", config)
+		// 	.then(response => {
+		// 		if (response.data.errors) {
+		// 			let errors = Object.entries(response.data.errors).join('\n').replace(/,|_/g, ' ');
+		// 			this.setState({
+		// 				formErrors: errors
+		// 			})
+		// 		} else {
+		// 			document.location.href = "/";
+		// 		}
+
+
+		// 	})
+		// 	.catch(function (error) {
+		// 		console.log(error);
+		// 	});
 	}
 
 	render() {
@@ -32,15 +71,18 @@ export default class Main extends React.Component {
 				</div>
 				<div className='content'>
 					<div id='available'>
-					<div className="wrapper-col">
-						<NavLink className="button m-4" to='/register'>
-							Sign up
+						<div className="wrapper-col">
+							<NavLink className="button m-4" to='/register'>
+								Sign up
 						</NavLink>
-						<NavLink className="button m-4" to='/login'>
-							Login
+							<NavLink className="button m-4" to='/login'>
+								Login
 						</NavLink>
-						<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
-					</div>
+							<button onClick={this.logout}>
+								Logout
+						</button>
+							<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
+						</div>
 						<h1>Available sessions</h1>
 						<div className='session_wrapper'>
 							<AllSessions sessionlist={this.state.availableSessions} />
