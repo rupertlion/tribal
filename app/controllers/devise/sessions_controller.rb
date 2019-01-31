@@ -13,7 +13,7 @@ class Devise::SessionsController < DeviseController
     end
   
     def create
-        binding.pry
+
       self.resource = warden.authenticate!(auth_options)
       set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)

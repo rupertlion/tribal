@@ -15,7 +15,7 @@ export default function LoginForm(props) {
 					onChange={props.onChange}
 					value={props.email}
 					id="email"
-					name="email"
+					name="user[email]"
 					type="email"
 					className="m-4"
 				/>
@@ -24,7 +24,7 @@ export default function LoginForm(props) {
 					onChange={props.onChange}
 					value={props.password}
 					id="password"
-					name="password"
+					name="user[password]"
 					type="password"
 					className="m-4"
 				/>
