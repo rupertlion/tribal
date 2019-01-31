@@ -5,7 +5,6 @@ class Devise::SessionsController < DeviseController
     prepend_before_action(only: [:create, :destroy]) { request.env["devise.skip_timeout"] = true }
   
     def new
-        
       self.resource = resource_class.new(sign_in_params)
       clean_up_passwords(resource)
       yield resource if block_given?
@@ -13,13 +12,16 @@ class Devise::SessionsController < DeviseController
     end
   
     def create
-
-      self.resource = warden.authenticate!(auth_options)
-      set_flash_message!(:notice, :signed_in)
-      sign_in(resource_name, resource)
-      yield resource if block_given?
-      
-      respond_with resource, location: after_sign_in_path_for(resource)
+      if warden.authenticate
+        self.resource = warden.authenticate!(auth_options)
+          set_flash_message!(:notice, :signed_in)
+          sign_in(resource_name, resource)
+          yield resource if block_given?
+          respond_with resource, location: after_sign_in_path_for(resource)
+        
+      else
+        render json: {errors: "Invalid Email or password."}
+      end
     end
   
     def destroy
@@ -43,7 +45,7 @@ class Devise::SessionsController < DeviseController
     end
   
     def auth_options
-      { scope: resource_name, recall: "#{controller_path}#new" }
+      { scope: resource_name, :recall => '/register' }
     end
   
     def translation_scope

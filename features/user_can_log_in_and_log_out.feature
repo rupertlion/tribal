@@ -17,8 +17,24 @@ Feature: User can log in and out
         And I click 'Log in'
         Then I should see 'Hello, Jon!'
 
-    Scenario: If user fills in the login form incorrectly he will see an error message
+    Scenario: If user doesn't fill in the form he will see an error message
         When I click 'Log in'
+        Then I should see 'Invalid Email or password.'
+
+    Scenario: If user fills in only email he will see an error message
+        When I fill in 'email' with 'rel@email.com'
+        And I click 'Log in'
+        Then I should see 'Invalid Email or password.'
+
+    Scenario: If user fills in the only password he will see an error message
+        When I fill in 'password' with 'password'
+        And I click 'Log in'
+        Then I should see 'Invalid Email or password.'
+
+    Scenario: If user fills in the login form incorrectly he will see an error message
+        When I fill in 'email' with 'rel@email.com'
+        And I fill in 'password' with 'passwo'
+        And I click 'Log in'
         Then I should see 'Invalid Email or password.'
 
     Scenario: User can log out when logged in

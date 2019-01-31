@@ -32,9 +32,8 @@ export class Login extends Component {
 		axios
 			.post("/users/sign_in", data, config)
 			.then(response => {
-
 				if (response.data.errors) {
-					let errors = Object.entries(response.data.errors).join('\n').replace(/,|_/g, ' ');
+					let errors = response.data.errors;
 					this.setState({
 						formErrors: errors
 					})
@@ -57,6 +56,7 @@ export class Login extends Component {
     render() {
         return (
             <div>
+				<div style={{ whiteSpace: 'pre-wrap' }}>{this.state.formErrors}</div>
                 <LoginForm
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}

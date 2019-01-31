@@ -40,6 +40,7 @@ export class Registration extends Component {
 			.then(response => {
 
 				if (response.data.errors) {
+					debugger;
 					let errors = Object.entries(response.data.errors).join('\n').replace(/,|_/g, ' ');
 					this.setState({
 						formErrors: errors
