@@ -7,3 +7,7 @@ Then("I should see {string} in {string}") do |session, status|
 		expect(page).to have_content session
 	end
 end
+
+Then("I should not see {string}") do |content|
+    expect(page).to have_no_content content
+end

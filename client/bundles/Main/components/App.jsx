@@ -1,7 +1,8 @@
 import React from "react";
-import { Route, Switch, BrowserRouter, NavLink } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Main from "./Main";
 import Registration from "./Registration";
+import Login from "./Login";
 
 
 export class App extends React.Component {
@@ -24,6 +25,7 @@ export class App extends React.Component {
 			<Switch>
 				<Route exact path ='/' render={() => <Main sessions={this.state.sessions} />} />;
 				<Route exact path ='/register' render={() => <Registration />} />;
+				<Route exact path ='/login' render={() => <Login />} />;
 			</Switch>
 		</BrowserRouter>
 		</div>

@@ -36,6 +36,9 @@ export default class Main extends React.Component {
 						<NavLink className="button m-4" to='/register'>
 							Sign up
 						</NavLink>
+						<NavLink className="button m-4" to='/login'>
+							Login
+						</NavLink>
 						<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
 					</div>
 						<h1>Available sessions</h1>

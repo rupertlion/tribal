@@ -1,3 +1,4 @@
+@javascript
 Feature: User can log in and out
     As a Visitor
     In order to use the site functionality
@@ -7,12 +8,12 @@ Feature: User can log in and out
         Given the following user exists
             | email          | password | password_confirmation | first_name | last_name | role |
             | real@email.com | password | password              | Jon        | Doe       | 0    |
-        And I visit the landing page
+        And I visit the site
         And I click 'Login'
 
     Scenario: If user fills in the login form correctly he can log in
-        When I fill in 'Email' field with 'real@email.com'
-        And I fill in 'Password' field with 'password'
+        When I fill in 'email' with 'real@email.com'
+        And I fill in 'password' with 'password'
         And I click 'Log in'
         Then I should see 'Hello, Jon!'
 
