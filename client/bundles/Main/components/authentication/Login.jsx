@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm";
 const axios = require("axios");
 
 export class Login extends Component {
-    constructor(props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			email: "",
@@ -40,8 +40,6 @@ export class Login extends Component {
 				} else {
 					document.location.href = "/";
 				}
-
-
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -53,18 +51,18 @@ export class Login extends Component {
 			[event.target.id]: event.target.value
 		});
 	}
-    render() {
-        return (
-            <div>
-				<div style={{ whiteSpace: 'pre-wrap' }}>{this.state.formErrors}</div>
-                <LoginForm
-                    onSubmit={this.onSubmit}
-                    onChange={this.onChange}
-                    email={this.state.email}
-                    password={this.state.password} />
-            </div>
-        )
-    }
+	render() {
+		return (
+			<div className='main_container'>
+				<div className="mt-4 text-center" style={{ whiteSpace: 'pre-wrap' }}>{this.state.formErrors}</div>
+				<LoginForm
+					onSubmit={this.onSubmit}
+					onChange={this.onChange}
+					email={this.state.email}
+					password={this.state.password} />
+			</div>
+		)
+	}
 }
 
 export default Login

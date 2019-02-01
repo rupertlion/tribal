@@ -3,7 +3,7 @@ import React from 'react'
 export default function LoginForm(props) {
     return (
         <div className="main_container">
-			<h1 className="m-4">Register</h1>
+			<h1 className="m-4">Login</h1>
 			<form
 				id="Login-form"
 				name="Login-form"

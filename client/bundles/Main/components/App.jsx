@@ -1,9 +1,8 @@
 import React from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Main from "./Main";
-import Registration from "./Registration";
-import Login from "./Login";
-
+import Registration from "./authentication/Registration";
+import Login from "./authentication/Login";
 
 export class App extends React.Component {
 	constructor(props) {
@@ -12,7 +11,6 @@ export class App extends React.Component {
 			sessions: props
 		}
 	}
-
 	componentDidMount(){
 		this.setState({
 			sessions: this.props
