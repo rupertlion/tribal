@@ -21,40 +21,33 @@ export class Registration extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onRoleClick = this.onRoleClick.bind(this);
 	}
-
 	onSubmit() {
 		event.preventDefault();
 		const csrfToken = ReactOnRails.authenticityToken();
 		let registrationForm = document.getElementById("Registration-form");
 		const data = new FormData(registrationForm);
-
 		const config = {
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
 				"X-CSRF-Token": csrfToken
 			}
 		};
-
 		axios
 			.post("/users", data, config)
 			.then(response => {
-
 				if (response.data.errors) {
 					let errors = Object.entries(response.data.errors).join('\n').replace(/,|_/g, ' ');
 					this.setState({
 						formErrors: errors
-					})
+					});
 				} else {
 					document.location.href = "/";
 				}
-
-
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
 	}
-
 	onClick(event) {
 		event.preventDefault();
 		this.setState({
@@ -91,7 +84,7 @@ export class Registration extends Component {
 					</div>
 				</div>
 				<div style={this.state.roleChoiceStatus ? {} : { display: "none" }}>
-					<div style={{ whiteSpace: 'pre-wrap' }}>{this.state.formErrors}</div>
+					<div className="mt-4 text-center whitespace-pre-wrap">{this.state.formErrors}</div>
 					<RegistrationForm
 						onSubmit={this.onSubmit}
 						onChange={this.onChange}

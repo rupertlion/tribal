@@ -5,6 +5,8 @@ Tribal is a social fitness application.
 # Features included:
 * Visitors can view sessions
 * Visitors can register on the site
+* User can log in and log out
+* Responsive design
 
 # Contributors
 (In Alphabetical order)

@@ -1,26 +1,39 @@
 import React from "react";
-import AllSessions from "./AllSessions";
-import { NavLink, Link } from 'react-router-dom'
+import MainSessionsDisplay from "./sessions/MainSessionsDisplay";
+import MainNavLinks from "./MainNavLinks";
+
+const axios = require("axios");
+
 export default class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			availableSessions: props.sessions.availableSessions,
-			bookedSessions: props.sessions.bookedSessions,
-			fullSessions: props.sessions.fullSessions,
-			user: props.sessions.user
+			sessions: props.sessions,
+			user: ""
 		};
+		this.logout = this.logout.bind(this);
 	}
-
 	componentWillMount() {
 		this.setState({
-			availableSessions: this.props.sessions.availableSessions,
-			bookedSessions: this.props.sessions.bookedSessions,
-			fullSessions: this.props.sessions.fullSessions,
+			sessions: this.props.sessions,
 			user: this.props.sessions.user
 		})
 	}
-
+	logout() {
+		event.preventDefault();
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+			}
+		};
+		axios.delete(
+			"/users/sign_out", config
+		).then((response) => {
+			document.location.href = "/";
+		}).catch(function (error) {
+			console.log(error);
+		})
+	}
 	render() {
 		return (
 			<div className='main_container'>
@@ -28,39 +41,12 @@ export default class Main extends React.Component {
 					<img src="./assets/logo.png" id="logo" alt="logo" />
 					<p id="title">Tribal</p>
 				</div>
-				<div className='wrapper-col content'>
-				</div>
-				<div className='content'>
-					<div id='available'>
-					<div className="wrapper-col">
-						<NavLink className="button m-4" to='/register'>
-							Sign up
-						</NavLink>
-						<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
+				<div className='content wrapper-col'>
+					<MainNavLinks user={this.state.user} logout={this.logout}/>
+					<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
+					<div style = {this.state.user? {}:{display: "none"} }>
+						<MainSessionsDisplay  sessions={this.state.sessions} />
 					</div>
-						<h1>Available sessions</h1>
-						<div className='session_wrapper'>
-							<AllSessions sessionlist={this.state.availableSessions} />
-						</div>
-						<br />
-					</div>
-					<div id='booked'>
-						<h1>Booked sessions</h1>
-						<div className='session_wrapper'>
-							<AllSessions sessionlist={this.state.bookedSessions} />
-						</div>
-						<br />
-					</div>
-					<div id='full'>
-						<h1>Full sessions</h1>
-						<div className='session_wrapper'>
-							<AllSessions sessionlist={this.state.fullSessions} />
-						</div>
-					</div>
-				</div>
-
-				<div className='footer'>
-					<p>FOOTER</p>
 				</div>
 			</div>
 		);
