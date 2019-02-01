@@ -1,3 +1,4 @@
+@javascript
 Feature: User can sign in using Facebook
 
 	As a user
