@@ -84,7 +84,7 @@ export class Registration extends Component {
 					</div>
 				</div>
 				<div style={this.state.roleChoiceStatus ? {} : { display: "none" }}>
-					<div className="mt-4 text-center" style={{ whiteSpace: 'pre-wrap' }}>{this.state.formErrors}</div>
+					<div className="mt-4 text-center whitespace-pre-wrap">{this.state.formErrors}</div>
 					<RegistrationForm
 						onSubmit={this.onSubmit}
 						onChange={this.onChange}

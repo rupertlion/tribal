@@ -53,7 +53,7 @@ export class Login extends Component {
 	render() {
 		return (
 			<div className='main_container'>
-				<div className="mt-4 text-center" style={{ whiteSpace: 'pre-wrap' }}>{this.state.formErrors}</div>
+				<div className="mt-4 text-center whitespace-pre-wrap" >{this.state.formErrors}</div>
 				<LoginForm
 					onSubmit={this.onSubmit}
 					onChange={this.onChange}
