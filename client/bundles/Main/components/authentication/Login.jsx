@@ -28,7 +28,6 @@ export class Login extends Component {
 				"X-CSRF-Token": csrfToken
 			}
 		};
-
 		axios
 			.post("/users/sign_in", data, config)
 			.then(response => {
@@ -36,7 +35,7 @@ export class Login extends Component {
 					let errors = response.data.errors;
 					this.setState({
 						formErrors: errors
-					})
+					});
 				} else {
 					document.location.href = "/";
 				}
@@ -61,8 +60,8 @@ export class Login extends Component {
 					email={this.state.email}
 					password={this.state.password} />
 			</div>
-		)
+		);
 	}
 }
 
-export default Login
+export default Login;

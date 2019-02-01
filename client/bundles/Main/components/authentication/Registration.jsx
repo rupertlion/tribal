@@ -39,7 +39,7 @@ export class Registration extends Component {
 					let errors = Object.entries(response.data.errors).join('\n').replace(/,|_/g, ' ');
 					this.setState({
 						formErrors: errors
-					})
+					});
 				} else {
 					document.location.href = "/";
 				}

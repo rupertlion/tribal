@@ -26,8 +26,8 @@ export class MainSessionsDisplay extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default MainSessionsDisplay
+export default MainSessionsDisplay;

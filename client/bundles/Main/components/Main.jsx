@@ -2,8 +2,8 @@ import React from "react";
 import MainSessionsDisplay from "./sessions/MainSessionsDisplay";
 import MainNavLinks from "./MainNavLinks";
 
-
 const axios = require("axios");
+
 export default class Main extends React.Component {
 	constructor(props) {
 		super(props);
@@ -11,23 +11,20 @@ export default class Main extends React.Component {
 			sessions: props.sessions,
 			user: ""
 		};
-		this.logout = this.logout.bind(this)
+		this.logout = this.logout.bind(this);
 	}
-
 	componentWillMount() {
 		this.setState({
 			sessions: this.props.sessions,
 			user: this.props.sessions.user
 		})
 	}
-
 	logout() {
 		event.preventDefault();
 		const csrfToken = ReactOnRails.authenticityToken();
 		const config = {
 			headers: {
 				"Content-Type": "application/json",
-				"X-CSRF-Token": csrfToken
 			}
 		};
 		axios.delete(
@@ -38,7 +35,6 @@ export default class Main extends React.Component {
 			console.log(error);
 		})
 	}
-
 	render() {
 		return (
 			<div className='main_container'>
