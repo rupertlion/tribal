@@ -12,6 +12,10 @@ RSpec.describe Session, type: :model do
     it { is_expected.to validate_presence_of :start_date }
   end
 
+  describe 'Associations' do
+    it { is_expected.to belong_to :price_table }
+  end
+
   describe FactoryBot do
     it 'should have valid Factory' do
       expect(create(:session)).to be_valid
