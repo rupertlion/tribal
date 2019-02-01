@@ -21,7 +21,6 @@ export default class Main extends React.Component {
 	}
 	logout() {
 		event.preventDefault();
-		const csrfToken = ReactOnRails.authenticityToken();
 		const config = {
 			headers: {
 				"Content-Type": "application/json",
