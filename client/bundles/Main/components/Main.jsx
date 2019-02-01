@@ -9,7 +9,7 @@ export default class Main extends React.Component {
 		super(props);
 		this.state = {
 			sessions: props.sessions,
-			user: props.sessions.user
+			user: ""
 		};
 		this.logout = this.logout.bind(this)
 	}
@@ -51,11 +51,14 @@ export default class Main extends React.Component {
 				<div className='content'>
 					<div id='available'>
 						<div className="wrapper-col">
-							<MainNavLinks logout={this.logout}/>
+							<MainNavLinks user={this.state.user} logout={this.logout}/>
 							<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
 						</div>
 					</div>
-					<MainSessionsDisplay sessions={this.state.sessions} />
+					<div style = {this.state.user? {}:{display: "none"} }>
+						<MainSessionsDisplay  sessions={this.state.sessions} />
+					</div>
+					
 				</div>
 
 				<div className='footer'>
