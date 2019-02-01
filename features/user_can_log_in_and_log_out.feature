@@ -38,8 +38,6 @@ Feature: User can log in and out
         Then I should see 'Invalid Email or password.'
 
     Scenario: User can log out when logged in
-        When I fill in 'email' with 'real@email.com'
-        And I fill in 'password' with 'password'
-        And I click 'Log in'
+        Given I am logged in as "real@email.com"
         When I click 'Logout'
         Then I should not see 'Hello, Jon!'

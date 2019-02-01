@@ -49,7 +49,7 @@ export default class Main extends React.Component {
 				<div className='wrapper-col content'>
 				</div>
 				<div className='content'>
-					<div id='available'>
+					<div>
 						<div className="wrapper-col">
 							<MainNavLinks user={this.state.user} logout={this.logout}/>
 							<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
