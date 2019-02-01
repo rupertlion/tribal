@@ -1,15 +1,14 @@
 import React from "react";
-import AllSessions from "./AllSessions";
-import { NavLink, Link } from 'react-router-dom'
+import MainSessionsDisplay from "./MainSessionsDisplay";
+import MainNavLinks from "./MainNavLinks";
+
 
 const axios = require("axios");
 export default class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			availableSessions: props.sessions.availableSessions,
-			bookedSessions: props.sessions.bookedSessions,
-			fullSessions: props.sessions.fullSessions,
+			sessions: props.sessions,
 			user: props.sessions.user
 		};
 		this.logout = this.logout.bind(this)
@@ -17,9 +16,7 @@ export default class Main extends React.Component {
 
 	componentWillMount() {
 		this.setState({
-			availableSessions: this.props.sessions.availableSessions,
-			bookedSessions: this.props.sessions.bookedSessions,
-			fullSessions: this.props.sessions.fullSessions,
+			sessions: this.props.sessions,
 			user: this.props.sessions.user
 		})
 	}
@@ -40,24 +37,6 @@ export default class Main extends React.Component {
 		}).catch(function (error) {
 			console.log(error);
 		})
-
-		// axios
-		// 	.delete("/users/sign_out", config)
-		// 	.then(response => {
-		// 		if (response.data.errors) {
-		// 			let errors = Object.entries(response.data.errors).join('\n').replace(/,|_/g, ' ');
-		// 			this.setState({
-		// 				formErrors: errors
-		// 			})
-		// 		} else {
-		// 			document.location.href = "/";
-		// 		}
-
-
-		// 	})
-		// 	.catch(function (error) {
-		// 		console.log(error);
-		// 	});
 	}
 
 	render() {
@@ -72,36 +51,11 @@ export default class Main extends React.Component {
 				<div className='content'>
 					<div id='available'>
 						<div className="wrapper-col">
-							<NavLink className="button m-4" to='/register'>
-								Sign up
-						</NavLink>
-							<NavLink className="button m-4" to='/login'>
-								Login
-						</NavLink>
-							<button onClick={this.logout}>
-								Logout
-						</button>
+							<MainNavLinks logout={this.logout}/>
 							<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
 						</div>
-						<h1>Available sessions</h1>
-						<div className='session_wrapper'>
-							<AllSessions sessionlist={this.state.availableSessions} />
-						</div>
-						<br />
 					</div>
-					<div id='booked'>
-						<h1>Booked sessions</h1>
-						<div className='session_wrapper'>
-							<AllSessions sessionlist={this.state.bookedSessions} />
-						</div>
-						<br />
-					</div>
-					<div id='full'>
-						<h1>Full sessions</h1>
-						<div className='session_wrapper'>
-							<AllSessions sessionlist={this.state.fullSessions} />
-						</div>
-					</div>
+					<MainSessionsDisplay sessions={this.state.sessions} />
 				</div>
 
 				<div className='footer'>
