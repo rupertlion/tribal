@@ -1,0 +1,5 @@
+<%= form_with url: transactions_path, local: true, id: 'transaction_form' do |form| %>
+  <%= form.label 'Credit or debit card' %>
+  <div id="card-element"></div>
+  <%= form.submit 'Submit Payment' %>
+<% end %>

@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
 	validates_presence_of :first_name, :last_name, :role
 
+	has_many :transactions
+
 	def self.new_with_session(params, session)
     super.tap do |user|
       if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
