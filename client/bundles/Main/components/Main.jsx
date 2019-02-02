@@ -42,7 +42,7 @@ export default class Main extends React.Component {
 	}
 
 buyStripe(){
-	document.location.href = "/";
+	document.location.href = "/transactions/new";
 }
 
 	render() {
