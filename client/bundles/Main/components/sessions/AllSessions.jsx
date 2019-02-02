@@ -7,12 +7,12 @@ const AllSessions = props => {
 	let sessions = sessionlist.map(session => {
 
 		return (
-			<div class="wrapper">
+			<div className="wrapper">
 				<div id={session.id} className='session'>
-					<h1 class="session_name">{session.title}</h1>
+					<h1 className="session_name">{session.title}</h1>
 					<p>{new Date(session.start_date).toLocaleString('en-GB', { h12: false })}</p>
 				</div>
-				<button class="button">join</button>
+				<button className="button">join</button>
 			</div>
 		);
 	});
