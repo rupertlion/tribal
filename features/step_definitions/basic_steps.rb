@@ -47,3 +47,7 @@ end
 When("I select {string} from {string}") do |option, selection|
 	select option, from: selection
 end
+
+Given("I fill in {string} with the date {string}") do |string, string2|
+	
+end
