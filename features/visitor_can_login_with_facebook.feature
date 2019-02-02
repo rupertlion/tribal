@@ -18,10 +18,3 @@ Feature: User can register and login using Facebook
 		And I click "Login"
 		And I click "Login with Facebook"
 		And I should see "Hello, John!"
-
-	Scenario: Facebook authentication fails
-		Given the facebook authentication is not granted
-		And I visit the site
-		And I click "Login with Facebook"
-		Then I should be redirected to index page
-		And I should see "Could not authenticate you!"

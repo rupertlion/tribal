@@ -28,9 +28,5 @@ Given("I am logged in as {string}") do |email|
 	visit root_path
 end
 
-Given("the facebook authentication is not granted") do
-  OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
-end
-
 
 

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 				 :omniauthable, omniauth_providers: [:facebook]
 
 
-	validates_presence_of :first_name, :last_name
+	validates_presence_of :first_name, :last_name, :role
 
 	def self.new_with_session(params, session)
     super.tap do |user|

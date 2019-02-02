@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function LoginForm(props) {
     return (
-      <div className="main_container">
+      <div className="main_container wrapper-col">
 				<h1 className="m-4">Login</h1>
 				<button
 						className="button m-4"

@@ -18,6 +18,8 @@ module OmniAuthFixtures
 			      "last_name"=>"Doe",
 			      "email"=>"john.doe@mail.com",
 			      "id"=>"2243663995747690"}}}
-
+		end
+		def self.facebook_params
+			{"role"=>"0"}
 		end
 end

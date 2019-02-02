@@ -26,7 +26,6 @@ export class Registration extends Component {
 	}
 
 	fbLogin(){
-
 		let role = this.state.role
 		let params = '?role=' + role
 		let authUrl = '/users/auth/facebook'
@@ -105,7 +104,7 @@ export class Registration extends Component {
 				</div>
 				<div style={this.state.roleChoiceStatus ? {} : { display: "none" }}>
 					<div className="mt-4 text-center whitespace-pre-wrap">{this.state.formErrors}</div>
-						<div style={this.state.displayForm ?  { display: "none" } : {} }>
+						<div className="wrapper-col" style={this.state.displayForm ?  { display: "none" } : {} }>
 							<button
 								className="button m-4"
 								onClick={this.fbLogin}
