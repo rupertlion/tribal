@@ -5,7 +5,6 @@ class User < ApplicationRecord
 				 :recoverable, :rememberable, :validatable,
 				 :omniauthable, omniauth_providers: [:facebook]
 
-
 	validates_presence_of :first_name, :last_name, :role
 
 	def self.new_with_session(params, session)

@@ -26,11 +26,10 @@ export class Registration extends Component {
 	}
 
 	fbLogin(){
-		let role = this.state.role
-		let params = '?role=' + role
-		let authUrl = '/users/auth/facebook'
-		console.log(authUrl + params)
-		document.location.href = authUrl + params
+		let role = this.state.role;
+		let params = '?role=' + role;
+		let authUrl = '/users/auth/facebook';
+		document.location.href = authUrl + params;
 	}
 
 	onSubmit() {
