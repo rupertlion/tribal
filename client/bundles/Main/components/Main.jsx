@@ -15,10 +15,6 @@ export default class Main extends React.Component {
 		this.logout = this.logout.bind(this);
 	}
 
-	fbLogin(){
-		document.location.href ='/users/auth/facebook'
-	}
-
 	componentWillMount() {
 		this.setState({
 			sessions: this.props.sessions,

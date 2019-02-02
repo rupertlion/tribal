@@ -14,6 +14,11 @@ export class Login extends Component {
 		};
 		this.onChange = this.onChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+		this.fbLogin = this.fbLogin.bind(this);
+	}
+
+	fbLogin() {
+		document.location.href = "/users/auth/facebook";
 	}
 
 	onSubmit() {
@@ -40,7 +45,7 @@ export class Login extends Component {
 					document.location.href = "/";
 				}
 			})
-			.catch(function (error) {
+			.catch(function(error) {
 				console.log(error);
 			});
 	}
@@ -52,13 +57,16 @@ export class Login extends Component {
 	}
 	render() {
 		return (
-			<div className='main_container'>
-				<div className="mt-4 text-center whitespace-pre-wrap" >{this.state.formErrors}</div>
+			<div className="main_container">
+				<div className="mt-4 text-center whitespace-pre-wrap">
+					{this.state.formErrors}
+				</div>
 				<LoginForm
 					onSubmit={this.onSubmit}
 					onChange={this.onChange}
 					email={this.state.email}
-					password={this.state.password} />
+					password={this.state.password}
+				/>
 			</div>
 		);
 	}

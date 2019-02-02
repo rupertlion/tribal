@@ -21,13 +21,6 @@ function MainNavLinks(props) {
 						Login
 					</NavLink>
 					<button
-						style={props.user ? { display: "none" } : {}}
-						className="button m-4"
-						onClick={props.fbLogin}
-					>
-						Login with Facebook
-					</button>
-					<button
 						style={props.user ? {} : { display: "none" }}
 						className="button m-4"
 						onClick={props.logout}
