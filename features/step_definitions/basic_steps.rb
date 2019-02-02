@@ -30,20 +30,20 @@ end
 
 Given("I click on {string}") do |link|
 	click_on link
-  end
-  
-  Given("I fill in {string} field with {string}") do |element, value|
+end
+
+Given("I fill in {string} field with {string}") do |element, value|
 	fill_in element, with: value
-  end
+end
 
-  Given("show me the page") do
+Given("show me the page") do
 	save_and_open_page
-  end
+end
 
-  Given("I am on the create session page") do
+Given("I am on the create session page") do
 	visit new_session_path
-  end
+end
 
-  When("I select {string} from {string}") do |option, selection|
+When("I select {string} from {string}") do |option, selection|
 	select option, from: selection
-   end
+end

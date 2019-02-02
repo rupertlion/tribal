@@ -17,5 +17,5 @@ Feature: Coach can create session
         And I fill in 'Title' field with 'Crossfit'
         And I fill in 'Description' field with 'Workout'
         And I click on 'Create Session'
-        Given show me the page
+        And I should see 'Workout'
         Then I should see 'Session successfully created'

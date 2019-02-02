@@ -1,6 +1,10 @@
-<%= form_with model: @session, url: new_session_path  do |form| %>
+<%= form_with model: @session, url: sessions_path  do |form| %>
 
-	<%= select_date Date.today, prefix: :start_date %>
+	<%# <%= select_date Date.today, prefix: :start_date %>
+
+	<%# <%= time_select :object_name, :attribute_name, :default => {:hour => "10", :minute => "20"} %>
+
+  <%# <%= datetime_select("article", "written_on") %>
 
   <p>
     <%= form.label :title %>
@@ -8,11 +12,16 @@
   </p>
 
   <p>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+    <%= form.time_field :start_date %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.label :price_table %>
+    <br/>
+    <%= form.collection_select :price_table_id, @price_tables, :id, :price_point %>
   </p>
+
+  <%= form.submit "Create Session" %>
 <% end %>
