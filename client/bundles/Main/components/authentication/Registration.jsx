@@ -8,7 +8,7 @@ export class Registration extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			role: "",
+			role: "0",
 			first_name: "",
 			last_name: "",
 			email: "",

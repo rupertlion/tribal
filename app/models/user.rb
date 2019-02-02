@@ -21,9 +21,8 @@ class User < ApplicationRecord
 			user.email = auth.info.email
 			user.first_name = auth.info.first_name
 			user.last_name = auth.info.last_name
-			binding.pry
 			if params.present?
-				user.role = params.role
+				user.role = params['role']
 			end
       user.password = Devise.friendly_token[0,20]
     end

@@ -11,7 +11,7 @@ function MainNavLinks(props) {
 						className="button m-4"
 						to="/register"
 					>
-						Sign up
+						Register
 					</NavLink>
 					<NavLink
 						style={props.user ? { display: "none" } : {}}

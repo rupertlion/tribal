@@ -66,6 +66,7 @@ export class Login extends Component {
 					onChange={this.onChange}
 					email={this.state.email}
 					password={this.state.password}
+					fbLogin={this.fbLogin}
 				/>
 			</div>
 		);

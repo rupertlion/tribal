@@ -1,19 +1,23 @@
 module OmniAuthFixtures
 	def self.facebook_mock
-			{provider: 'facebook',
-			 uid: 10205522242159630,
-			 info:
-					 {email: 'thomas@craftacademy.se',
-						name: 'Thomas Ochman',
-						image: 'http://graph.facebook.com/v2.6/10205522242159630/picture'},
-			 credentials:
-					 {token:
-								'EAAXC253O740BANfJYLjz2LCzT1UcfuEsoHpZBMAifdiud8sulF2LIfjDy5BeGiNPEPQjUn7xpvAu0neqnGeoCAvCU2KIucyP5sYNQDaDtCj06UmOF2POEq8ZAajS2zaQ4B7uIIRgv4p3wlACmh9f9MsMnDZB6gZD',
-						expires_at: 1517839337,
-						expires: true},
-			 extra:
-					 {raw_info:
-								{name: 'Thomas Ochman', email: 'thomas@craftacademy.se', id: '10205522242159630'}}}
+		{"provider"=>"facebook",
+			  "uid"=>"2243663995747690",
+			  "info"=>
+			  	{"email"=>"john.doe@mail.com",
+			    "first_name"=>"John",
+			    "last_name"=>"Doe",
+			    "image"=>"http://graph.facebook.com/v2.10/"},
+			  "credentials"=>
+			  	{"token"=>
+			    	"EBADnlbiIiEkBACoOh2GeGbxbZABXGPPKQPZABVS9z3BjKIzlZB2hZBtTAYKZCwkO7HVchqY5ZCmrvvLk4i7GMwfuYVZAQsFK0JXreW6ngA7IgtsFYEeMKtBPZAVL1ZAEMWZCvVZCrZAmkcxwXIwnv1bEVZAZBVSCZBUsHdWsX74qAzZARm5t4QZDZD",
+			    "expires_at"=>1554219256,
+			    "expires"=>true},
+			  "extra"=>
+			  	{"raw_info"=>
+			    	{"first_name"=>"John",
+			      "last_name"=>"Doe",
+			      "email"=>"john.doe@mail.com",
+			      "id"=>"2243663995747690"}}}
 
 		end
 end
