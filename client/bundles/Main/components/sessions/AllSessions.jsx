@@ -16,7 +16,14 @@ const AllSessions = props => {
 			</div>
 		);
 	});
-	return <div>{sessions}</div>
+	return (
+	<div id={props.sessionType}>
+		<h1>{props.sessionType} sessions</h1>
+		<div className='session_wrapper'>
+			<div>{sessions}</div>
+		</div>
+		<br />
+	</div>)
 };
 
 export default AllSessions;
