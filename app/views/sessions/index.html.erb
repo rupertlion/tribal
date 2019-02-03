@@ -1,1 +1,4 @@
-<p><%= @sessions.first.title %></p>
+<%= @sessions.each do |session| %>
+    <p><%= session.title %></p>
+    <p><%= session.start_date %></p>
+<% end %>
