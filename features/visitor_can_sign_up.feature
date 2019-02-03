@@ -9,9 +9,10 @@ Feature: User can sign up
 			| first_name | last_name | email         | password | password_confirmation |
 			| Hanna      | Nyman     | hanna@mail.se | password | password              |
 		And I visit the site
-		And I click "Sign up"
-		Then I should see 'I am a'
-		Then I click 'Trainee'
+		And I click "Register"
+		And I should see 'I am a'
+		And I click 'Trainee'
+		And I click 'Register with Email'
 
 	Scenario: When I fill in the sign up form, I can sign up [Happy Path]
 		When I fill in 'first_name' with 'John'

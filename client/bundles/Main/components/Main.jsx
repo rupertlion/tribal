@@ -1,6 +1,7 @@
 import React from "react";
 import MainSessionsDisplay from "./sessions/MainSessionsDisplay";
 import MainNavLinks from "./MainNavLinks";
+import ReactOnRails from "react-on-rails";
 
 const axios = require("axios");
 
@@ -13,17 +14,21 @@ export default class Main extends React.Component {
 		};
 		this.logout = this.logout.bind(this);
 	}
+
 	componentWillMount() {
 		this.setState({
 			sessions: this.props.sessions,
 			user: this.props.sessions.user
 		})
 	}
+
 	logout() {
 		event.preventDefault();
+		const csrfToken = ReactOnRails.authenticityToken();
 		const config = {
 			headers: {
 				"Content-Type": "application/json",
+				"X-CSRF-Token": csrfToken
 			}
 		};
 		axios.delete(
@@ -34,6 +39,7 @@ export default class Main extends React.Component {
 			console.log(error);
 		})
 	}
+
 	render() {
 		return (
 			<div className='main_container'>
@@ -42,7 +48,7 @@ export default class Main extends React.Component {
 					<p id="title">Tribal</p>
 				</div>
 				<div className='content wrapper-col'>
-					<MainNavLinks user={this.state.user} logout={this.logout}/>
+					<MainNavLinks user={this.state.user} fbLogin = {this.fbLogin} logout={this.logout}/>
 					<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
 					<div style = {this.state.user? {}:{display: "none"} }>
 						<MainSessionsDisplay  sessions={this.state.sessions} />
