@@ -17,8 +17,8 @@ Feature: Coach can create session
     Scenario: Coach can create session
         Given I fill in 'Title' field with 'Spinning'
         And I fill in 'start_date' field with '2019-02-20 20:00'
-        Then show me the page
         And I select 'low' from 'price_table_id'
         And I click on 'Create Session'
         And I should see 'Spinning'
+        Then show me the page
         Then I should see 'Session successfully created'
