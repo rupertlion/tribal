@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Main from "./Main";
 import Registration from "./authentication/Registration";
 import Login from "./authentication/Login";
+import AddSession from "./sessions/AddSession";
 
 export class App extends React.Component {
 	constructor(props) {
@@ -24,6 +25,7 @@ export class App extends React.Component {
 				<Route exact path ='/' render={() => <Main sessions={this.state.sessions} />} />;
 				<Route exact path ='/register' render={() => <Registration />} />;
 				<Route exact path ='/login' render={() => <Login />} />;
+				<Route exact path ='/addsession' render={() => <AddSession />} />;
 			</Switch>
 		</BrowserRouter>
 		</div>

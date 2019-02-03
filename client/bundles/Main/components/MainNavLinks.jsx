@@ -27,6 +27,13 @@ function MainNavLinks(props) {
 					>
 						Logout
 					</button>
+					<NavLink
+						style={props.user ? {} : { display: "none" }}
+						className="button m-4"
+						to="/addsession"
+					>
+						Add Session
+					</NavLink>
 				</div>
 			</div>
 
