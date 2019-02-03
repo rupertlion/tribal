@@ -21,13 +21,13 @@ export class App extends React.Component {
 		return (
 			<div>
 			<BrowserRouter>
-			<Switch>
-				<Route exact path ='/' render={() => <Main sessions={this.state.sessions} />} />;
-				<Route exact path ='/register' render={() => <Registration />} />;
-				<Route exact path ='/login' render={() => <Login />} />;
-				<Route exact path ='/addsession' render={() => <AddSession />} />;
-			</Switch>
-		</BrowserRouter>
+				<Switch>
+					<Route exact path ='/' render={() => <Main sessions={this.state.sessions} />} />;
+					<Route exact path ='/register' render={() => <Registration />} />;
+					<Route exact path ='/login' render={() => <Login />} />;
+					<Route exact path ='/addsession' render={() => <AddSession />} />;
+				</Switch>
+			</BrowserRouter>
 		</div>
 		)
 	}

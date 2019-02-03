@@ -9,6 +9,7 @@ Feature: Trainee can see all sessions
 		Given the following user exists
 			| email          | password | password_confirmation | first_name | last_name | role |
 			| real@email.com | password | password              | Jon        | Doe       | 0    |
+			
 		And the following sessions exist
 			| title     | start_date          | end_date            | status    |
 			| Crossfit  | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | available |
@@ -17,6 +18,7 @@ Feature: Trainee can see all sessions
 
 	Scenario: Trainee can view all sessions on the Home Page
 		Given I am logged in as "real@email.com"
+		Then show me the page
 		Then I should see 'CROSSFIT' in 'available'
 		And I should see '01/02/2019, 16:00:00' in 'available'
 		And I should see 'YOGA' in 'booked'

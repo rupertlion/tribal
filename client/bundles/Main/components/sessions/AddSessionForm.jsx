@@ -14,7 +14,7 @@ const AddSessionForm = props => {
                 onChange={props.onChange}
                 value={props.title}
                 id="title"
-                name="title"
+                name="session[title]"
                 type="text"
                 className="m-4"
             />
@@ -24,7 +24,7 @@ const AddSessionForm = props => {
                 onChange={props.onChange}
                 value={props.start_date}
                 id="start_date"
-                name="date"
+                name="session[start_date]"
                 type="datetime-local"
                 className="m-4"
             />
@@ -34,7 +34,7 @@ const AddSessionForm = props => {
                 onChange={props.onChange}
                 value={props.price_table_id}
                 id="price_table_id"
-                name="price"
+                name="session[price_table_id]"
                 type="number"
                 className="m-4"
             />

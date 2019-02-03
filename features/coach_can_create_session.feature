@@ -17,15 +17,12 @@ Feature: Coach can create session
         And I am logged in as 'coach@email.com'
         And I click 'Add Session'
         
-
     Scenario: Coach can create session
-        Given I fill in 'title' field with 'Spinning'
-        And I fill in 'date' field with '2019-02-20 20:00'
-        And I fill in 'price' field with '1'
+        Given I fill in 'session[title]' field with 'Spinning'
+        And I fill in 'session[start_date]' field with '2019-02-20 20:00'
+        And I fill in 'session[price_table_id]' field with '1'
         And I click 'Add Session'
-        And show me the page
-        And I should see 'Spinning'
-        Then I should see 'Session successfully created'
+        And I should see 'SPINNING'
     
     Scenario: Coach can not create session
         Given I click 'Add Session'
