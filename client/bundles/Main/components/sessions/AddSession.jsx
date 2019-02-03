@@ -4,7 +4,7 @@ import AddSessionForm from "./AddSessionForm";
 
 const axios = require("axios");
 
-export class Login extends Component {
+export class AddSession extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -69,4 +69,4 @@ export class Login extends Component {
 	}
 }
 
-export default Login;
+export default AddSession;

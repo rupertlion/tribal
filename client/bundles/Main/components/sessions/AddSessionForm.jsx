@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddSession = props => {
+const AddSessionForm = props => {
     return <div className="main_container">
         <h1>Add Session</h1>
         <form
@@ -46,4 +46,4 @@ const AddSession = props => {
     </div>
 };
 
-export default AddSession;
+export default AddSessionForm;
