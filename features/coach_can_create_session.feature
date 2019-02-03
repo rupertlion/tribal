@@ -1,3 +1,4 @@
+@javascript
 Feature: Coach can create session
 
     As a coach
@@ -13,18 +14,19 @@ Feature: Coach can create session
             | email           | password | password_confirmation | first_name | last_name |
             | coach@email.com | password | password              | Coach-Jon  | Doe       |
         And I visit the site
-        And show me the page
+        And I am logged in as 'coach@email.com'
         And I click 'Add Session'
         
 
     Scenario: Coach can create session
-        Given I fill in 'Title' field with 'Spinning'
-        And I fill in 'start_date' field with '2019-02-20 20:00'
-        And I select 'low' from 'price_table_id'
-        And I click 'Create Session'
+        Given I fill in 'title' field with 'Spinning'
+        And I fill in 'date' field with '2019-02-20 20:00'
+        And I fill in 'price' field with '1'
+        And I click 'Add Session'
+        And show me the page
         And I should see 'Spinning'
         Then I should see 'Session successfully created'
     
     Scenario: Coach can not create session
-        Given I click 'Create Session'
+        Given I click 'Add Session'
         Then I should see 'Every field needs to be filled in!'
