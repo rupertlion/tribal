@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         @session = Session.new(session_params)
         @session.save
         if @session.persisted?
-            redirect_to sessions_path, notice: "Session successfully created"
+            redirect_to root_path, notice: "Session successfully created"
         else
             redirect_to new_session_path, notice: 'Every field needs to be filled in!'
         end
