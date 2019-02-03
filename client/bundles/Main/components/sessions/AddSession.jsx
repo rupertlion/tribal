@@ -10,6 +10,8 @@ export class Login extends Component {
 		this.state = {
 			title: "",
 			start_date: "",
+			price_table_id: 1,
+			formErrors: ""
 		};
 		this.onChange = this.onChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
@@ -29,7 +31,7 @@ export class Login extends Component {
         };
         
 		axios
-			.post("/sessions/new", data, config)
+			.post("/sessions", data, config)
 			.then(response => {
 				if (response.data.errors) {
 					let errors = response.data.errors;
@@ -37,7 +39,6 @@ export class Login extends Component {
 						formErrors: errors
 					});
 				} else {
-					alert(data)
 					document.location.href = "/";
 				}
 			})
@@ -51,6 +52,7 @@ export class Login extends Component {
 			[event.target.id]: event.target.value
 		});
 	}
+
 	render() {
 		return (
 			<div className='main_container'>
@@ -59,7 +61,8 @@ export class Login extends Component {
 					onSubmit={this.onSubmit}
 					onChange={this.onChange}
 					title={this.state.title}
-                    start_date={this.state.start_date}
+					start_date={this.state.start_date}
+					price_table_id={this.state.price_table_id}
                 />
 			</div>
 		);
