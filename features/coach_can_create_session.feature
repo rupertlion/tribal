@@ -12,16 +12,19 @@ Feature: Coach can create session
         And the following user exists
             | email           | password | password_confirmation | first_name | last_name |
             | coach@email.com | password | password              | Coach-Jon  | Doe       |
-        And I am on the create session page
+        And I visit the site
+        And show me the page
+        And I click 'Add Session'
+        
 
     Scenario: Coach can create session
         Given I fill in 'Title' field with 'Spinning'
         And I fill in 'start_date' field with '2019-02-20 20:00'
         And I select 'low' from 'price_table_id'
-        And I click on 'Create Session'
+        And I click 'Create Session'
         And I should see 'Spinning'
         Then I should see 'Session successfully created'
     
     Scenario: Coach can not create session
-        Given I click on 'Create Session'
+        Given I click 'Create Session'
         Then I should see 'Every field needs to be filled in!'

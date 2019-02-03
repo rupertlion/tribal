@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         if @session.persisted?
             redirect_to root_path, notice: "Session successfully created"
         else
-            redirect_to new_session_path, notice: 'Every field needs to be filled in!'
+            render json: {errors: 'Every field needs to be filled in!'}
         end
     end
 
@@ -32,6 +32,6 @@ class SessionsController < ApplicationController
     end
 
     def session_params
-        params.permit(:title, :start_date, :price_table_id)
+        params.require(:session).permit(:title, :start_date, :price_table_id)
     end
 end

@@ -1,9 +1,8 @@
 import React from "react";
 
 const AddSession = props => {
-
     return <div className="main_container">
-        <h1 className="m-4">Create Session</h1>
+        <h1>Add Session</h1>
         <form
             id="Session-form"
             name="Session-form"
@@ -19,18 +18,30 @@ const AddSession = props => {
                 type="text"
                 className="m-4"
             />
-            <label htmlFor="date">Start date</label>
+
+            <label htmlFor="start_date">Date and time</label>
             <input
                 onChange={props.onChange}
-                value={props.password}
+                value={props.start_date}
                 id="start_date"
                 name="session[start_date]"
                 type="datetime-local"
                 className="m-4"
             />
-            <button className="button" name="Submit" type="submit">
-                Create Session
-        </button>
+
+            <label htmlFor="price_table_id">Price</label>
+            <input
+                onChange={props.onChange}
+                value={props.price_table_id}
+                id="price_table_id"
+                name="session[price_table_id]"
+                type="number"
+                className="m-4"
+            />
+            
+            <button className="button" name="Submit" type="submit" >
+				Add Session
+			</button>
         </form>
     </div>
 };

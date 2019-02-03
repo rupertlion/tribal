@@ -20,14 +20,14 @@ export class App extends React.Component {
 	render() {
 		return (
 			<div>
-			<BrowserRouter>
+			{/* <BrowserRouter> */}
 			<Switch>
 				<Route exact path ='/' render={() => <Main sessions={this.state.sessions} />} />;
 				<Route exact path ='/register' render={() => <Registration />} />;
 				<Route exact path ='/login' render={() => <Login />} />;
 				<Route exact path ='/addsession' render={() => <AddSession />} />;
 			</Switch>
-		</BrowserRouter>
+		{/* </BrowserRouter> */}
 		</div>
 		)
 	}
