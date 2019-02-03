@@ -20,5 +20,8 @@ Feature: Coach can create session
         And I select 'low' from 'price_table_id'
         And I click on 'Create Session'
         And I should see 'Spinning'
-        Then show me the page
         Then I should see 'Session successfully created'
+    
+    Scenario: Coach can not create session
+        Given I click on 'Create Session'
+        Then I should see 'Every field needs to be filled in!'

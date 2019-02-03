@@ -17,8 +17,7 @@ class SessionsController < ApplicationController
         if @session.persisted?
             redirect_to sessions_path, notice: "Session successfully created"
         else
-            binding.pry
-            render "new", notice: 'Every field needs to be filled in!'
+            redirect_to new_session_path, notice: 'Every field needs to be filled in!'
         end
     end
 

@@ -1,10 +1,6 @@
+<%= notice || alert %>
+
 <%= form_with model: @sessions, url: sessions_path  do |form| %>
-
-	<%# <%= select_date Date.today, prefix: :start_date %>
-
-	<%# <%= time_select :object_name, :attribute_name, :default => {:hour => "10", :minute => "20"} %>
-
-  <%# <%= datetime_select("article", "written_on") %>
 
   <p>
     <%= form.label :title %>
