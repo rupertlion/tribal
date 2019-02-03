@@ -4,9 +4,9 @@ import AllSessions from "./AllSessions";
 function MainSessionsDisplay(props) {
 	return (
 		<div>
-			<AllSessions sessionType="available" sessionlist={props.sessions.availableSessions} />
-			<AllSessions sessionType="booked" sessionlist={props.sessions.bookedSessions} />
-			<AllSessions sessionType="full" sessionlist={props.sessions.fullSessions} />
+			<AllSessions sessionType="available" sessionlist={props.sessions} />
+			<AllSessions sessionType="booked" sessionlist={props.sessions} />
+			<AllSessions sessionType="full" sessionlist={props.sessions} />
 		</div>
 	)
 }
