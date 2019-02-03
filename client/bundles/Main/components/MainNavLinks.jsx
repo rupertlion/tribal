@@ -27,13 +27,6 @@ function MainNavLinks(props) {
 					>
 						Logout
 					</button>
-					<button
-						style={props.user ? {} : { display: "none" }}
-						className="button m-4"
-						onClick={props.buyStripe}
-					>
-						Buy session
-					</button>
 				</div>
 			</div>
 

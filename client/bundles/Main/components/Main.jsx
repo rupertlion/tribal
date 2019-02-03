@@ -13,7 +13,6 @@ export default class Main extends React.Component {
 			user: ""
 		};
 		this.logout = this.logout.bind(this);
-		this.buyStripe = this.buyStripe.bind(this);
 	}
 
 	componentWillMount() {
@@ -41,9 +40,7 @@ export default class Main extends React.Component {
 		})
 	}
 
-buyStripe(){
-	document.location.href = "/transactions/new";
-}
+
 
 	render() {
 		return (
@@ -53,7 +50,7 @@ buyStripe(){
 					<p id="title">Tribal</p>
 				</div>
 				<div className='content wrapper-col'>
-					<MainNavLinks user={this.state.user} fbLogin = {this.fbLogin} logout={this.logout} buyStripe={this.buyStripe}/>
+					<MainNavLinks user={this.state.user} fbLogin = {this.fbLogin} logout={this.logout} />
 					<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
 					<div style = {this.state.user? {}:{display: "none"} }>
 						<MainSessionsDisplay  sessions={this.state.sessions} />
