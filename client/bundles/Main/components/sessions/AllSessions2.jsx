@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import SessionCard from './SessionCard';
 
 export class AllSessions extends Component {
 	constructor(props) {
@@ -30,7 +29,23 @@ export class AllSessions extends Component {
 		let allSessions = this.state.sessions.map(session => {
 			if (session.status == this.state.sessionType) {
 				return (
-						<SessionCard session={session}/>
+					<div id={session.id} className="wrapper">
+						<div className='session'>
+							<h1 className="session_name">{session.title}</h1>
+							<p>{new Date(session.start_date).toLocaleString('en-GB', { h12: false })}</p>
+						</div>
+						<div style={this.state.buttonName ? {} : { display: "none" }} >
+							<button onClick={this.toggleShowDetails} className="button">{this.state.buttonName}</button>
+						</div>
+						<div style={this.state.showDetails ? {} : { display: "none" }}>
+							<button
+								className="button m-4"
+								onClick={this.buyStripe}
+							>
+								Buy session
+							</button>
+						</div>
+					</div>
 				);
 			}
 		});
