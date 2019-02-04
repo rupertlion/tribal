@@ -3,7 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
 				 :recoverable, :rememberable, :validatable,
-				 :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, omniauth_providers: [:facebook]
+  
+  enum role: { trainee: 0, coach: 1 } 
 
 	validates_presence_of :first_name, :last_name, :role
 

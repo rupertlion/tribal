@@ -8,7 +8,7 @@ export class Registration extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			role: "0",
+			role: "trainee",
 			first_name: "",
 			last_name: "",
 			email: "",
@@ -93,10 +93,10 @@ export class Registration extends Component {
 				<div style={this.state.roleChoiceStatus ? { display: "none" } : {}}>
 					<h1>I am a</h1>
 					<div className="content wrapper">
-						<button className="button" id = "role" name="role" value= "0" onClick={this.onRoleClick}>
+						<button className="button" id = "role" name="role" value= "trainee" onClick={this.onRoleClick}>
 							Trainee
 						</button>
-						<button className="button" id = "role" name="role" value="1" onClick={this.onRoleClick}>
+						<button className="button" id = "role" name="role" value="coach" onClick={this.onRoleClick}>
 							Coach
 						</button>
 					</div>
