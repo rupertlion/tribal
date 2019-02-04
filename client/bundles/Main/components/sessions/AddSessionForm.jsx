@@ -29,12 +29,12 @@ const AddSessionForm = props => {
                 className="m-4"
             />
 
-            <label htmlFor="price_table_id">Price</label>
+            <label htmlFor="price_point">Price</label>
             <input
                 onChange={props.onChange}
-                value={props.price_table_id}
-                id="price_table_id"
-                name="session[price_table_id]"
+                value={props.price_point}
+                id="price_point"
+                name="session[price_point]"
                 type="number"
                 className="m-4"
             />

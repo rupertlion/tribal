@@ -10,7 +10,7 @@ export class AddSession extends Component {
 		this.state = {
 			title: "",
 			start_date: "",
-			price_table_id: 1,
+			price_point: 1,
 			formErrors: ""
 		};
 		this.onChange = this.onChange.bind(this);
@@ -62,7 +62,7 @@ export class AddSession extends Component {
 					onChange={this.onChange}
 					title={this.state.title}
 					start_date={this.state.start_date}
-					price_table_id={this.state.price_table_id}
+					price_point={this.state.price_point}
                 />
 			</div>
 		);
