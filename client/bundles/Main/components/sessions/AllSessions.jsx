@@ -16,9 +16,9 @@ export class AllSessions extends Component {
 
 	toggleShowDetails() {
 		event.preventDefault();
-		this.setState({
-			showDetails: !showDetails,
-		});
+		this.setState(prevState => ({
+			showDetails: !prevState.showDetails,
+		}));
 	}
 
 	buyStripe(){
@@ -35,7 +35,7 @@ export class AllSessions extends Component {
 							<p>{new Date(session.start_date).toLocaleString('en-GB', { h12: false })}</p>
 						</div>
 						<div style={this.state.buttonName ? {} : { display: "none" }} >
-							<button onClick={this.toggleShowDetails(session.id)} className="button">{this.state.buttonName}</button>
+							<button onClick={this.toggleShowDetails} className="button">{this.state.buttonName}</button>
 						</div>
 						<div style={this.state.showDetails ? {} : { display: "none" }}>
 							<button

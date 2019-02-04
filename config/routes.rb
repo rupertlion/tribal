@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root controller: :main, action: :index
 	# get '*path', to: 'main#index', via: :all
 	resources :transactions, only: [:new, :create]
+	resources :sessions, only: [:show]
 end
