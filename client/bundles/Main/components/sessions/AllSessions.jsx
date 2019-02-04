@@ -10,33 +10,23 @@ export class AllSessions extends Component {
 			buttonName : props.buttonName,
 			showDetails: false
 		}
-		this.toggleShowDetails = this.toggleShowDetails.bind(this);
-		this.buyStripe = this.buyStripe.bind(this);
-
+		this.showPage = this.showPage.bind(this);
 	}
 
-	toggleShowDetails() {
-		event.preventDefault();
-		this.setState(prevState => ({
-			showDetails: !prevState.showDetails,
-		}));
+	showPage(event) {
+		document.location.href = '/sessions/' + event.target.value;
 	}
-
-	buyStripe(){
-		document.location.href = "/transactions/new";
-	}
-
 	render() {
 		let allSessions = this.state.sessions.map(session => {
 			if (session.status == this.state.sessionType) {
 				return (
-						<SessionCard session={session}/>
+						<SessionCard session={session} buttonName={this.state.buttonName} showPage={this.showPage} />
 				);
 			}
 		});
 		return (
 			<div id={this.state.sessionType}>
-				<h1>{this.state.sessionType} sessions</h1>
+				<h1 className="capitalize">{this.state.sessionType} sessions</h1>
 				<div className='session_wrapper'>
 					<div>{allSessions}</div>
 				</div>

@@ -7,11 +7,22 @@ export class ShowSession extends Component {
 		this.state = {
 			session: props.session
 		}
+	this.buyStripe = this.buyStripe.bind(this);
 	}
+
+	buyStripe(){
+		document.location.href = "/transactions/new";
+	}
+
 	render() {
 		return (
 			<div  className='session_wrapper' >
 				<SessionCard session={this.state.session} />
+				<div>
+				<button className="text-white" onClick={this.buyStripe}>
+						Buy Session
+				</button>
+				</div>
 			</div>
 		)
 	}

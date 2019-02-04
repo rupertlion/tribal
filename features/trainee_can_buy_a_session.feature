@@ -10,9 +10,14 @@ Feature: User can buy a subscription
 			| first_name | last_name | email         | password |
 			| John       | Doe       | john@mail.com | password |
 
+		And the following sessions exist
+			| title     | start_date          | end_date            | status    |
+			| Crossfit  | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | available |
+
 	Scenario: Trainee can successfully buy a subscription
 		And I am logged in as 'john@mail.com'
-		And I click 'Buy session'
+		And I click 'Book'
+		And I click 'Buy Session'
 		And I fill in the payment form
 		And I click 'Pay'
 		Then I wait 2 seconds
