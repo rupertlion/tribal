@@ -1,6 +1,7 @@
 import React from "react";
 
 const AddSessionForm = props => {
+    console.log(props.start_date)
     return <div className="main_container">
         <h1>Add Session</h1>
         <form
@@ -18,7 +19,7 @@ const AddSessionForm = props => {
                 type="text"
                 className="m-4"
             />
-
+            
             <label htmlFor="start_date">Date and time</label>
             <input
                 onChange={props.onChange}

@@ -31,18 +31,3 @@ end
 When("I wait 2 seconds") do
 	sleep 15
 end
-
-# Given("I fill in {string} with Mar, 2019") do |field|
-#     element = page.find_by_id(field)
-#     element.send_keys :up
-#     element.send_keys :tab
-# 	element.send_keys :up
-# 	element.send_keys :up
-# 	element.send_keys :up
-# 	element.send_keys :tab
-# 	element.send_keys :up
-# 	element.send_keys :tab
-# 	element.send_keys :up
-# 	element.send_keys :tab
-# 	element.send_keys :up
-# end

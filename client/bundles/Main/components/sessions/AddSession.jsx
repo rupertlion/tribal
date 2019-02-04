@@ -5,11 +5,14 @@ import AddSessionForm from "./AddSessionForm";
 const axios = require("axios");
 
 export class AddSession extends Component {
+	
 	constructor(props) {
+		let t = new Date();
+		let  new_time = (t.toLocaleDateString().split("/").reverse().join("-") + "T" + t.toLocaleTimeString().split(":").splice(0,2).join(":"))
 		super(props);
 		this.state = {
 			title: "",
-			start_date: "",
+			start_date: new_time,
 			price_point: 1,
 			formErrors: ""
 		};
@@ -57,6 +60,7 @@ export class AddSession extends Component {
 		return (
 			<div className='main_container'>
 				<div className="mt-4 text-center whitespace-pre-wrap" >{this.state.formErrors}</div>
+
 				<AddSessionForm
 					onSubmit={this.onSubmit}
 					onChange={this.onChange}
