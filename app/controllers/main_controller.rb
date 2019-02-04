@@ -1,11 +1,11 @@
 class MainController < ApplicationController
-  layout "main"
+  layout "application"
 
   def index
     if user_signed_in?
       user = current_user
     end
     sessions = Session.all
-    @main_props = {availableSessions: sessions.available, bookedSessions: sessions.booked, fullSessions: sessions.full, user: user}
+    @main_props = {sessions: sessions, user: user}
   end
 end

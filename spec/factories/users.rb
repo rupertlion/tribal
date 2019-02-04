@@ -4,6 +4,6 @@ FactoryBot.define do
     last_name { 'Doe' }
     email { 'mail@mail.com' }
     password { 'password' }
-    role { 1 }
+		role { 1 }
   end
 end

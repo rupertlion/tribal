@@ -1,22 +1,38 @@
-import React from "react";
+import React, { Component } from 'react'
+import SessionCard from './SessionCard';
 
-const AllSessions = props => {
+export class AllSessions extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			sessions: props.sessionlist.sessions,
+			sessionType : props.sessionType,
+			buttonName : props.buttonName,
+			showDetails: false
+		};
+		this.showPage = this.showPage.bind(this);
+	}
 
-	let sessionlist = props.sessionlist;
-
-	let sessions = sessionlist.map(session => {
-
+	showPage(event) {
+		document.location.href = '/sessions/' + event.target.value;
+	}
+	render() {
+		let allSessions = this.state.sessions.map(session => {
+			if (session.status === this.state.sessionType) {
+				return (
+						<SessionCard session={session} buttonName={this.state.buttonName} showPage={this.showPage} />
+				);
+			}
+		});
 		return (
-			<div className="wrapper">
-				<div id={session.id} className='session'>
-					<h1 className="session_name">{session.title}</h1>
-					<p>{new Date(session.start_date).toLocaleString('en-GB', { h12: false })}</p>
+			<div id={this.state.sessionType}>
+				<h1 className="capitalize">{this.state.sessionType} sessions</h1>
+				<div className='session_wrapper'>
+					<div>{allSessions}</div>
 				</div>
-				<button className="button">join</button>
-			</div>
-		);
-	});
-	return <div>{sessions}</div>
-};
+				<br />
+			</div>);
+	}
+}
 
 export default AllSessions;
