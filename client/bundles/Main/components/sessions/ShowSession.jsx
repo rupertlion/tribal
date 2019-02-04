@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import SessionCard from './SessionCard';
 
 export class ShowSession extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			session: props.session
-		}
+		};
 	this.buyStripe = this.buyStripe.bind(this);
 	}
 
@@ -16,17 +16,17 @@ export class ShowSession extends Component {
 
 	render() {
 		return (
-			<div  className='session_wrapper' >
+			<div  className='main_container wrapper-col' >
 				<SessionCard session={this.state.session} />
 				<div>
-				<button className="text-white" onClick={this.buyStripe}>
+				<button className='button' onClick={this.buyStripe}>
 						Buy Session
 				</button>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
-export default ShowSession
+export default ShowSession;
 

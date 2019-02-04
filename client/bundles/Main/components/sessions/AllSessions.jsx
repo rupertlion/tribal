@@ -9,7 +9,7 @@ export class AllSessions extends Component {
 			sessionType : props.sessionType,
 			buttonName : props.buttonName,
 			showDetails: false
-		}
+		};
 		this.showPage = this.showPage.bind(this);
 	}
 
@@ -18,7 +18,7 @@ export class AllSessions extends Component {
 	}
 	render() {
 		let allSessions = this.state.sessions.map(session => {
-			if (session.status == this.state.sessionType) {
+			if (session.status === this.state.sessionType) {
 				return (
 						<SessionCard session={session} buttonName={this.state.buttonName} showPage={this.showPage} />
 				);
@@ -31,8 +31,8 @@ export class AllSessions extends Component {
 					<div>{allSessions}</div>
 				</div>
 				<br />
-			</div>)
+			</div>);
 	}
 }
 
-export default AllSessions
+export default AllSessions;

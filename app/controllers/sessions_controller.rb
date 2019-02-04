@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 		if user_signed_in?
 			user = current_user
 		end
-		session = Session.find_by_id(params[:id])
+		session = Session.find(params[:id])
 		@session_props = {session: session, user: user}
 	end
 end

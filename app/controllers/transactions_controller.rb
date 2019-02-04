@@ -15,15 +15,15 @@ class TransactionsController < ApplicationController
 					customer: customer.id,
 					amount: 100 *100,
 					currency: 'SEK',
-					description: "#{current_user.first_name} #{current_user.last_name} has purchased a monthly subscription"
+					description: "#{current_user.first_name} #{current_user.last_name} purchased the session: #{session.title}"
 			)
 			if charge[:paid]
 					@transaction = Transaction.new(amount: 100, user_id: current_user.id)
 					@transaction.save
 					redirect_to session_path(session.id),
-					notice: "You just purchase a session!"
+					notice: "You just purchased a session!"
 			else
-					redirect_to root_path, notice: "Charge declined!"
+					redirect_to session_path(session.id), notice: "Charge declined!"
 			end
 	end
 	private
