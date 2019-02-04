@@ -21,12 +21,13 @@ Feature: Coach can create session
 
     Scenario: Coach can create session
         Given I fill in 'session[title]' field with 'Spinning'
-        And I fill in 'start_date' with Mar, 2019
-        # And I fill in 'session[start_date]' field with '2019-02-20 20:00'
+        # And I fill in 'start_date' with Mar, 2019
+        And I fill in 'session[start_date]' field with '2019-02-20 20:00'
         And I fill in 'session[price_point]' field with '1'
         And I click 'Add Session'
         And I wait 2 seconds
         And show me the page
+        Then I should see 'Every field needs to be filled in!'
         Then I should see 'SPINNING'
 
     Scenario: Coach can not create session
