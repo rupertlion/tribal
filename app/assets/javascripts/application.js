@@ -3,7 +3,6 @@
 //= require turbolinks
 //= require_tree .
 
-
 const stripeTokenHandler = (token) => {
 	let stripeForm = document.getElementById('transaction_form');
 	const hiddenInput = document.createElement('input');

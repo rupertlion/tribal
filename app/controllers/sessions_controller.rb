@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-	layout "main"
+	layout "application"
 
 	def show
 		if user_signed_in?
