@@ -29,5 +29,5 @@ When("I select {string} from {string}") do |option, selection|
 end
 
 When("I wait 2 seconds") do
-	sleep 2
+	sleep 15
 end
