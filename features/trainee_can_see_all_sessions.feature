@@ -7,9 +7,9 @@ Feature: Trainee can see all sessions
 
 	Background:
 		Given the following user exists
-			| email          | password | password_confirmation | first_name | last_name | role |
-			| real@email.com | password | password              | Jon        | Doe       | 0    |
-			
+			| email          | password | password_confirmation | first_name | last_name | role    |
+			| real@email.com | password | password              | Jon        | Doe       | trainee |
+
 		And the following sessions exist
 			| title     | start_date          | end_date            | status    |
 			| Crossfit  | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | available |
