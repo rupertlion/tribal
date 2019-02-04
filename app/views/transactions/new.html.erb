@@ -1,4 +1,5 @@
 <%= form_with url: transactions_path, local: true, id: 'transaction_form' do |form| %>
+	<%= form.hidden_field :session_id, value: @session.id %>
   <%= form.label 'Credit or debit card' %>
   <div id="card-element"></div>
   <%= form.submit 'Submit Payment' %>

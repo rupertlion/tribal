@@ -1,6 +1,10 @@
 class TransactionsController < ApplicationController
 
+	def new
+		@session = Session.find_by_id(params[:sessionId])
+	end
 	def create
+			session = Session.find(params[:session_id])
 			@user = User.find_by_id(current_user.id)
 			customer = Stripe::Customer.create(
 					email: current_user.email,
@@ -16,8 +20,8 @@ class TransactionsController < ApplicationController
 			if charge[:paid]
 					@transaction = Transaction.new(amount: 100, user_id: current_user.id)
 					@transaction.save
-					redirect_to root_path,
-					notice: "You have become a subscriber!"
+					redirect_to session_path(session.id),
+					notice: "You just purchase a session!"
 			else
 					redirect_to root_path, notice: "Charge declined!"
 			end

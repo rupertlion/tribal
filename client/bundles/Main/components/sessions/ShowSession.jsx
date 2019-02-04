@@ -11,7 +11,7 @@ export class ShowSession extends Component {
 	}
 
 	buyStripe(){
-		document.location.href = "/transactions/new";
+		document.location.href = "/transactions/new" + "?sessionId=" + this.state.session.id;
 	}
 
 	render() {

@@ -21,4 +21,4 @@ Feature: User can buy a subscription
 		And I fill in the payment form
 		And I click 'Pay'
 		Then I wait 2 seconds
-		And I should not see 'Buy session'
+		And I should see 'You just purchase a session!'
