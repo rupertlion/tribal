@@ -27,3 +27,7 @@ end
 When("I select {string} from {string}") do |option, selection|
 	select option, from: selection
 end
+
+When("I wait 2 seconds") do
+	sleep 2
+end

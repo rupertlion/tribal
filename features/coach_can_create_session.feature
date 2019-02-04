@@ -24,7 +24,8 @@ Feature: Coach can create session
         And I fill in 'session[start_date]' field with '2019-02-20 20:00'
         And I fill in 'session[price_point]' field with '1'
         And I click 'Add Session'
-        And I should see 'SPINNING'
+        And I wait 2 seconds
+        Then I should see 'SPINNING'
 
     Scenario: Coach can not create session
         Given I click 'Add Session'
