@@ -1,5 +1,14 @@
 class SessionsController < ApplicationController
+    layout "application"
 
+	def show
+		if user_signed_in?
+			user = current_user
+		end
+		session = Session.find(params[:id])
+		@session_props = {session: session, user: user}
+    end
+    
     def create
         pt = PriceTable.find_by(price_point: session_params[:price_point])
         @session = Session.new(session_params.except(:price_point).merge(price_table_id: pt.id))

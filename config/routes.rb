@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: :omniauth_callbacks }
   root controller: :main, action: :index
-  resources :sessions, only: [:index, :new, :create, :show]
-  get '*path', to: 'main#index', via: :all
-  post 'sessions/new', to: 'sessions#new'
+  resources :sessions, only: [:create, :show]
+	resources :transactions, only: [:new, :create]
+	match 'register', to: 'main#index', via: [:get]
+	match 'login', to: 'main#index', via: [:get]
 end

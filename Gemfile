@@ -14,6 +14,7 @@ gem 'react_on_rails', '11.1.4'
 gem 'devise'
 gem 'tailwindcss', '~> 0.2.0'
 gem 'omniauth-facebook'
+gem 'stripe-rails'
 
 group :development, :test do
   gem 'factory_bot_rails'
@@ -27,6 +28,7 @@ group :development, :test do
 	gem "selenium-webdriver"
 	gem "chromedriver-helper"
   gem 'launchy', '~> 2.4', '>= 2.4.3'
+	gem 'stripe-ruby-mock', '~> 2.5.4', require: 'stripe_mock'
 end
 
 group :development do
