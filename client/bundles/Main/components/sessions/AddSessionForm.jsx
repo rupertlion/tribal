@@ -1,7 +1,6 @@
 import React from "react";
 
 const AddSessionForm = props => {
-    console.log(props.startDate)
     return <div className="main_container">
         <h1>Add Session</h1>
         <form
