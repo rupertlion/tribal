@@ -25,18 +25,6 @@ Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
-# Capybara.register_driver :selenium do |app|
-#   options = Selenium::WebDriver::Chrome::Options.new(
-#       args: %w( disable-popup-blocking disable-infobars)
-#   )
-
-#   Capybara::Selenium::Driver.new(
-#       app,
-#       browser: :chrome,
-#       options: options
-#   )
-# end
-
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 World(FactoryBot::Syntax::Methods)
