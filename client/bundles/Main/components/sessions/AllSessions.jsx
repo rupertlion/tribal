@@ -24,6 +24,7 @@ export class AllSessions extends Component {
 				);
 			}
 		});
+
 		return (
 			<div id={this.state.sessionType}>
 				<h1 className="capitalize">{this.state.sessionType} sessions</h1>

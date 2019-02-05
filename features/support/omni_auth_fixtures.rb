@@ -20,6 +20,6 @@ module OmniAuthFixtures
 			      "id"=>"2243663995747690"}}}
 		end
 		def self.facebook_params
-			{"role"=>"0"}
+			{"role"=>"trainee"}
 		end
 end
