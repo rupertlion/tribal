@@ -10,61 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_01_120610) do
+ActiveRecord::Schema.define(version: 2019_02_02_172750) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "hstore"
   enable_extension "plpgsql"
-
-  create_table "accounts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "clients", force: :cascade do |t|
-    t.string "photo"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.text "bio"
-    t.integer "user_id"
-    t.integer "account_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_clients_on_account_id"
-    t.index ["user_id"], name: "index_clients_on_user_id"
-  end
-
-  create_table "lessons", force: :cascade do |t|
-    t.string "image"
-    t.string "title"
-    t.integer "duration"
-    t.integer "cost"
-    t.string "category"
-    t.string "language"
-    t.string "level"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "price_tables", force: :cascade do |t|
     t.integer "trainees"
     t.integer "price_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "schedules", force: :cascade do |t|
-    t.string "title"
-    t.datetime "start"
-    t.datetime "end"
-    t.integer "trainer_id"
-    t.integer "account_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_schedules_on_account_id"
-    t.index ["trainer_id"], name: "index_schedules_on_trainer_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -78,19 +33,12 @@ ActiveRecord::Schema.define(version: 2019_02_01_120610) do
     t.index ["price_table_id"], name: "index_sessions_on_price_table_id"
   end
 
-  create_table "trainers", force: :cascade do |t|
-    t.string "photo"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.text "bio"
-    t.string "experience"
-    t.integer "user_id"
-    t.integer "account_id"
+  create_table "transactions", force: :cascade do |t|
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_trainers_on_account_id"
-    t.index ["user_id"], name: "index_trainers_on_user_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,4 +59,5 @@ ActiveRecord::Schema.define(version: 2019_02_01_120610) do
   end
 
   add_foreign_key "sessions", "price_tables"
+  add_foreign_key "transactions", "users"
 end
