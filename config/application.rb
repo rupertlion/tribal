@@ -13,8 +13,10 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module Tribal
-  class Application < Rails::Application
-    config.load_defaults 5.2
+	class Application < Rails::Application
+		config.active_job.queue_adapter = :delayed_job
+		config.load_defaults 5.2
+		config.time_zone = "Europe/Stockholm"
     config.generators do |generate|
       generate.helper false
       generate.assets false

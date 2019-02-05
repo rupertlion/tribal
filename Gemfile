@@ -16,6 +16,7 @@ gem 'tailwindcss', '~> 0.2.0'
 gem 'omniauth-facebook'
 gem 'stripe-rails'
 gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development, :test do
   gem 'factory_bot_rails'

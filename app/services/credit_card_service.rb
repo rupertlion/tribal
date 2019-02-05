@@ -21,13 +21,14 @@ module CreditCardService
 		)
 	end
 
-	def self.capture_charge(transaction_id)
-		charge = Stripe::Charge.retrieve(transaction_id)
-		charge.capture
-	end
+	# def self.changeStuff(transaction_id)
+	# 	tr = Transaction.find_by_id(transaction_id)
+	# 	tr.update_attribute(:payment_status, true)
+	# end
+	# handle_asynchronously :changeStuff
 
-	def self.charge_paid(current_user)
-		charge = Stripe::Charge.retrieve('ch_OxuUya3GiP11VP5KkWRt')
+	def self.capture_charge(transaction)
+		charge = Stripe::Charge.retrieve(transaction.stripe_id)
 		charge.capture
 	end
 
