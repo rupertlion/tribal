@@ -8,7 +8,7 @@ const AddSessionForm = props => {
             id="Session-form"
             name="Session-form"
             onSubmit={props.onSubmit}
-            className="wrapper-col"
+            className="m-4 wrapper-col"
         >
             <label htmlFor="Title">Title</label>
             <input
@@ -17,7 +17,7 @@ const AddSessionForm = props => {
                 id="title"
                 name="session[title]"
                 type="text"
-                className="m-4"
+                className="m-4 form_field"
             />
             
             <label htmlFor="start_date">Date and time</label>
@@ -27,7 +27,7 @@ const AddSessionForm = props => {
                 id="start_date"
                 name="session[start_date]"
                 type="datetime-local"
-                className="m-4"
+                className="m-4 form_field"
             />
 
             <label htmlFor="price_point">Price</label>
@@ -37,10 +37,10 @@ const AddSessionForm = props => {
                 id="price_point"
                 name="session[price_point]"
                 type="number"
-                className="m-4"
+                className="m-4 form_field"
             />
             
-            <button className="button" name="Submit" type="submit" >
+            <button className="m-4 button" name="Submit" type="submit" >
 				Add Session
 			</button>
         </form>
