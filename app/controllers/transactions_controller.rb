@@ -6,7 +6,7 @@ class TransactionsController < ApplicationController
 
 	def create
 		session = Session.find(params[:session_id])
-		@user = User.find_by_id(current_user.id)
+		# user = User.find_by_id(current_user.id)
 		customer = CreditCardService.create_stripe_customer(current_user,params)
 		charge = CreditCardService.create_charge(customer,current_user,session)
 		transaction = Transaction.create(
@@ -15,7 +15,7 @@ class TransactionsController < ApplicationController
 															payment_status: false,
 															user_id: current_user.id,
 															session_id: session.id)
-		delayed_payment = CreditCardService.delay(run_at: session.start_date).capture_charge(transaction)
+		CreditCardService.delay(run_at: session.start_date).capture_charge(transaction)
 		if charge
 				redirect_to session_path(session.id), notice: "You just purchased a session!"
 		else

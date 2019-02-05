@@ -12,7 +12,7 @@ Feature: User can buy a subscription
 
 		And the following sessions exist
 			| title     | start_date          | end_date            | status    |
-			| Crossfit  | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | available |
+			| Crossfit  | 2020-02-01 15:00:00 | 2020-02-01 15:30:00 | available |
 
 	Scenario: Trainee can successfully buy a subscription
 		And I am logged in as 'john@mail.com'
@@ -22,3 +22,6 @@ Feature: User can buy a subscription
 		And I click 'Pay'
 		Then I wait 2 seconds
 		And I should see 'You just purchased a session!'
+		And the card is not yet charged
+		And the date is 2020-02-01 15:00:00
+		And the card is charged
