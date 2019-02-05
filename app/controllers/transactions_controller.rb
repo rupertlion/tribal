@@ -15,8 +15,7 @@ class TransactionsController < ApplicationController
 															payment_status: false,
 															user_id: current_user.id,
 															session_id: session.id)
-		price = Price.new
-		delayed_payment = price.delay(run_at: 1.minutes.from_now).changeStuff(transaction.id)
+		delayed_payment = CreditCardService.delay(run_at: session.start_date).capture_charge(transaction)
 		if charge
 				redirect_to session_path(session.id), notice: "You just purchased a session!"
 		else

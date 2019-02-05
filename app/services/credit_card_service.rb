@@ -1,6 +1,6 @@
 require 'stripe'
 
-module CreditCardService
+class CreditCardService
 
 	def self.create_stripe_customer(current_user,params)
 		Stripe::Customer.create(
@@ -30,6 +30,8 @@ module CreditCardService
 	def self.capture_charge(transaction)
 		charge = Stripe::Charge.retrieve(transaction.stripe_id)
 		charge.capture
+		tr = Transaction.find_by_id(transaction.id)
+		tr.update_attribute(:payment_status, true)
 	end
 
 	def self.get_token(params)
