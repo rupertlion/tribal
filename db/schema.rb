@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 2019_02_02_172750) do
 
   create_table "price_tables", force: :cascade do |t|
     t.integer "trainees"
-    t.integer "price_point"
+    t.integer "pricePoint"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
     t.string "title"
-    t.datetime "start_date"
+    t.datetime "startDate"
     t.datetime "end_date"
     t.integer "status", default: 0
     t.datetime "created_at", null: false

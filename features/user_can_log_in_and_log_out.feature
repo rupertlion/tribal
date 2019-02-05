@@ -6,8 +6,8 @@ Feature: User can log in and out
 
 	Background:
 		Given the following user exists
-			| email          | password | password_confirmation | first_name | last_name | role |
-			| real@email.com | password | password              | Jon        | Doe       | 0    |
+			| email          | password | password_confirmation | first_name | last_name | role    |
+			| real@email.com | password | password              | Jon        | Doe       | trainee |
 		And I visit the site
 		And I click 'Login'
 

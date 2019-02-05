@@ -11,7 +11,7 @@ Feature: User can buy a subscription
 			| John       | Doe       | john@mail.com | password |
 
 		And the following sessions exist
-			| title     | start_date          | end_date            | status    |
+			| title     | startDate          | end_date            | status    |
 			| Crossfit  | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | available |
 
 	Scenario: Trainee can successfully buy a subscription

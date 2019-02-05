@@ -61,7 +61,6 @@
  * @import "utilities/skew-transforms";
  */
 
-
 .main_container {
     color: white ;
 }
@@ -142,12 +141,16 @@ body {
     margin-right: 10px;
 }
 
-#title {
+#title_header {
     font-size: 40px;
     font-weight: bold;
     background: -webkit-linear-gradient(#47FC98, #40bffd, #148BFD);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.form_field {
+    background-color: white;
 }
 
 @screen xl {

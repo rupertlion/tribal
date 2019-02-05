@@ -3,7 +3,7 @@ Then("I should see {string}") do |content|
 end
 
 Then("I should see {string} in {string}") do |session, status|
-	within("##{status}") do
+	within("##{status}") do 
 		expect(page).to have_content session
 	end
 end
