@@ -31,3 +31,7 @@ end
 When("I wait 2 seconds") do
 	sleep 15
 end
+
+Given("I set the date and time") do
+    fill_in 'session[start_date]', with: Time.new()
+end

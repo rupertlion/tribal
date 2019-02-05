@@ -21,8 +21,8 @@ Feature: Coach can create session
 
     Scenario: Coach can create session
         Given I fill in 'session[title]' field with 'Spinning'
-        # And I fill in 'session[start_date]' field with '20-02-2019 20:00'
         And I fill in 'session[price_point]' field with '1'
+        And I set the date and time
         And I click 'Add Session'
         Then I should see 'SPINNING'
 
