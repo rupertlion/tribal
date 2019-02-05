@@ -29,6 +29,7 @@ group :development, :test do
 	gem 'coveralls', require: false
 	gem "selenium-webdriver"
 	gem "chromedriver-helper"
+	gem "timecop"
 	gem 'stripe-ruby-mock', '~> 2.5.4', require: 'stripe_mock'
 end
 

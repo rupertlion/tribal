@@ -45,3 +45,11 @@ Then("I wait 2 seconds") do
   sleep 2
 end
 
+Given("the time is {int} {int} {int} {int}:{int}:{int}") do |int, int2, int3, int4, int5, int6|
+	new_time = Time.local(int, int2, int3, int4, int5, int6)
+	Timecop.freeze(new_time)
+end
+
+Given("the job runs") do
+	Delayed::Worker.new.run( Delayed::Job.find(1))
+end

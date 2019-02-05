@@ -32,6 +32,10 @@ FactoryBot::SyntaxRunner.class_eval do
   include ActionDispatch::TestProcess
 end
 
+Delayed::Worker.delay_jobs = ->(job) {
+  job.run_at && job.run_at > Time.now
+}
+
 Before '@stripe' do
   chrome_options << 'headless'
   StripeMock.start
@@ -39,5 +43,5 @@ end
 
 After '@stripe' do
   StripeMock.stop
-end 
+end
 
