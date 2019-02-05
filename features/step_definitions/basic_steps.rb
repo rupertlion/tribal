@@ -29,7 +29,7 @@ When("I select {string} from {string}") do |option, selection|
 end
 
 Given("I set the date and time") do
-    fill_in 'session[start_date]', with: Time.new()
+    fill_in 'session[startDate]', with: Time.new()
 end
 Given('I fill in the payment form') do
   card_no = '42'

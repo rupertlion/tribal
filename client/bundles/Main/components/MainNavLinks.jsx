@@ -28,7 +28,7 @@ function MainNavLinks(props) {
 						Logout
 					</button>
 					<NavLink
-						style={props.user && props.user.role == "coach" ? {} : { display: "none" }}
+						style={props.user && props.user.role === "coach" ? {} : { display: "none" }}
 						className="button m-4"
 						to="/addsession"
 					>

@@ -1,7 +1,7 @@
 import React from "react";
 
 const AddSessionForm = props => {
-    console.log(props.start_date)
+    console.log(props.startDate)
     return <div className="main_container">
         <h1>Add Session</h1>
         <form
@@ -20,22 +20,22 @@ const AddSessionForm = props => {
                 className="m-4 form_field"
             />
             
-            <label htmlFor="start_date">Date and time</label>
+            <label htmlFor="startDate">Date and time</label>
             <input
                 onChange={props.onChange}
-                value={props.start_date}
-                id="start_date"
-                name="session[start_date]"
+                value={props.startDate}
+                id="startDate"
+                name="session[startDate]"
                 type="datetime-local"
                 className="m-4 form_field"
             />
 
-            <label htmlFor="price_point">Price</label>
+            <label htmlFor="pricePoint">Price</label>
             <input
                 onChange={props.onChange}
-                value={props.price_point}
-                id="price_point"
-                name="session[price_point]"
+                value={props.pricePoint}
+                id="pricePoint"
+                name="session[pricePoint]"
                 type="number"
                 className="m-4 form_field"
             />

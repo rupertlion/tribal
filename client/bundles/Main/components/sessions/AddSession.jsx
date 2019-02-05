@@ -10,8 +10,8 @@ export class AddSession extends Component {
 		super(props);
 		this.state = {
 			title: "",
-			start_date: "",
-			price_point: 1,
+			startDate: "",
+			pricePoint: 1,
 			formErrors: ""
 		};
 		this.onChange = this.onChange.bind(this);
@@ -63,8 +63,8 @@ export class AddSession extends Component {
 					onSubmit={this.onSubmit}
 					onChange={this.onChange}
 					title={this.state.title}
-					start_date={this.state.start_date}
-					price_point={this.state.price_point}
+					startDate={this.state.startDate}
+					pricePoint={this.state.pricePoint}
                 />
 			</div>
 		);

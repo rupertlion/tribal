@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
     end
     
     def create
-        pt = PriceTable.find_by(price_point: session_params[:price_point])
-        @session = Session.new(session_params.except(:price_point).merge(price_table_id: pt.id))
+        pt = PriceTable.find_by(pricePoint: session_params[:pricePoint])
+        @session = Session.new(session_params.except(:pricePoint).merge(price_table_id: pt.id))
         @session.save
         if @session.persisted?
             redirect_to root_path
@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
     private
 
     def session_params
-        params.require(:session).permit(:title, :start_date, :price_point)
+        params.require(:session).permit(:title, :startDate, :pricePoint)
     end
 end
