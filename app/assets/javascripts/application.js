@@ -50,8 +50,44 @@ const addCanvas = (streamId) => {
 				setTimeout(loop, 1000 / 30);
 			}
 		}
-	};
+	});
 }
+
+let client = AgoraRTC.createClient({
+	mode: 'live',
+	codec:'h264'
+});
+
+client.init('9fe6d9bebd0c49e48096c8d67c584ac2', () => {
+	consol.log('Client initialized!')
+});
+
+client.join(null, 'Tribal', (uid) => {
+	let localStream = AgoraRTC.createStream({
+		streamID: uid,
+		audio: false,
+		video: true,
+		screen: false
+	});
+
+	localStream.init( () => {
+		localStream.play('me');
+		client.publish(localStream.handleFail);
+
+		client.on('stream-added', (evt) => {
+			client.subscribe(evt.stream.handleFail);
+		});
+
+		client.on('stream-subscribed', (evt) => {
+			let stream = evt.stream;
+			addVideoStream(stream.getID());
+			stream.play(stream.getID());
+			addCanvas(stream.getID());
+		});
+
+		client.on('stream-removed', removeVideoStream);
+	}, handleFail)
+}, handleFail); 
 
 // stripe
 
