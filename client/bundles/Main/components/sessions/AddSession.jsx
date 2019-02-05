@@ -7,12 +7,10 @@ const axios = require("axios");
 export class AddSession extends Component {
 	
 	constructor(props) {
-		let t = new Date();
-		let  new_time = (t.toLocaleDateString().split("/").reverse().join("-") + "T" + t.toLocaleTimeString().split(":").splice(0,2).join(":"))
 		super(props);
 		this.state = {
 			title: "",
-			start_date: new_time,
+			start_date: "",
 			price_point: 1,
 			formErrors: ""
 		};
