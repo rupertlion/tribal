@@ -27,7 +27,6 @@ Feature: Coach creates and starts videocall for session
 
     Scenario: Videocall gets added to session
         Given I click 'Start'
-        And show me the page
         Then I should be on the videocall page
         And I should see 'My feed'
         And I should see 'Remote feeds'
