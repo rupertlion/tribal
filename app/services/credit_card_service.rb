@@ -6,7 +6,7 @@ class CreditCardService
 		Stripe::Customer.create(
 			email: current_user.email,
 			source: get_token(params),
-			description: [current_user.first_name, current_user.last_name].join('')
+			description: [current_user.first_name, current_user.last_name].join(' ')
 		)
 	end
 
@@ -21,11 +21,8 @@ class CreditCardService
 		)
 	end
 
-	def self.capture_charge(transaction)
-		charge = Stripe::Charge.retrieve(transaction.stripe_id)
-		charge.capture
-		transaction = Transaction.find_by_id(transaction.id)
-		transaction.update_attribute(:payment_status, true)
+	def self.capture(transaction)
+		CreditCardService.capture_charge(transaction)
 	end
 
 	def self.get_token(params)
@@ -34,6 +31,15 @@ class CreditCardService
 
 	def self.generate_test_token
 		StripeMock.create_test_helper.generate_card_token
+	end
+
+	private
+
+	def self.capture_charge(transaction)
+		charge = Stripe::Charge.retrieve(transaction.stripe_id)
+		charge.capture
+		transaction = Transaction.find_by_id(transaction.id)
+		transaction.update_attribute(:payment_status, true)
 	end
 
 end

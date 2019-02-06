@@ -1,9 +1,9 @@
 Session.destroy_all
 PriceTable.destroy_all
 
-PriceTable.create(trainees: 4, pricePoint: 2)
-PriceTable.create(trainees: 4, pricePoint: 1)
-pricetable = PriceTable.create(trainees: 4, pricePoint: 0)
+PriceTable.create(trainees: 4, price_point: 2)
+PriceTable.create(trainees: 4, price_point: 1)
+pricetable = PriceTable.create(trainees: 4, price_point: 0)
 
 5.times do
     Session.create(title: 'Crossfit', start_date: '2019-02-01 15:00:00', status: 0, price_table_id: pricetable.id)
