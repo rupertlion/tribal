@@ -1,9 +1,6 @@
 import React from 'react';
 
 function StartSession(props) {
-    if (this.state.user.role == 'coach') {
-        console.log('coach is logged in');
-    }
 
 	return (
 		<div>
