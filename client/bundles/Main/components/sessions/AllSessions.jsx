@@ -21,6 +21,8 @@ export class AllSessions extends Component {
 		if (user) {
 			if (user.role == "coach" && availability == "booked") {
 				this.setState({ buttonName: "Start" });
+			} else if (user.role == "trainee" && availability == "available") {
+				this.setState({ buttonName: "Book" });
 			} else {
 				this.setState({ buttonName: "Join" });
 			}
@@ -28,7 +30,13 @@ export class AllSessions extends Component {
 	}
 
 	showPage(event) {
-		document.location.href = '/sessions/' + event.target.value;
+		let user = this.state.user;
+
+		if (user.role == "trainee") {
+			document.location.href = '/sessions/' + event.target.value;
+		} else if (user.role == "coach") {
+			document.location.href = '/videocall';
+		}
 	}
 
 	render() {

@@ -10,7 +10,7 @@ export default function SessionCard(props) {
 						<p>{new Date(props.session.start_date).toLocaleString('en-GB', { h12: false })}</p>
 					</div>
 					<div style={props.buttonName ? {} : { display: "none" }} >
-						<button value={props.session.id} onClick={props.showPage}  className="button">{props.buttonName}</button>
+						<button value={props.session.id} onClick={props.showPage} className="button">{props.buttonName}</button>
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,5 @@
 <div class='text-center text-white text-2xl'>
 	<%= flash[:notice] %>
 </div>
+
 <%= react_component("ShowSession", props: @session_props, prerender: Rails.env.test?) %>
