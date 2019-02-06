@@ -8,11 +8,6 @@
 let remoteContainer;
 let canvasContainer;
 
-document.addEventListener('turbolinks:load', event => {
-    remoteContainer = document.getElementById("remote-container");
-    canvasContainer = document.getElementById("canvas-container");
-})
-
 let handleFail = function (err) {
 	console.log("Error : ", err);
 };
@@ -126,6 +121,8 @@ const initiateStripe = () => {
 };
 
 document.addEventListener('turbolinks:load', () => {
+	remoteContainer = document.getElementById("remote-container");
+    canvasContainer = document.getElementById("canvas-container");
 	let stripeForm = document.getElementById('transaction_form');
 
 	if (stripeForm) {
