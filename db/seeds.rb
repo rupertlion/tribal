@@ -3,6 +3,11 @@ PriceTable.destroy_all
 User.destroy_all
 
 trainee = User.create(first_name: 'John', last_name: 'Trainee', email: 'trainee@mail.com', password: 'password', role: 0)
+trainee2 = User.create(first_name: 'John2', last_name: 'Trainee', email: 'trainee2@mail.com', password: 'password', role: 0)
+trainee3 = User.create(first_name: 'John3', last_name: 'Trainee', email: 'trainee3@mail.com', password: 'password', role: 0)
+trainee4 = User.create(first_name: 'John4', last_name: 'Trainee', email: 'trainee4@mail.com', password: 'password', role: 0)
+trainee5 = User.create(first_name: 'John5', last_name: 'Trainee', email: 'trainee5@mail.com', password: 'password', role: 0)
+trainee6 = User.create(first_name: 'John6', last_name: 'Trainee', email: 'trainee6@mail.com', password: 'password', role: 0)
 coach = User.create(first_name: 'Jack', last_name: 'Coach', email: 'coach@mail.com', password: 'password', role: 1)
 
 low = PriceTable.create(price_point: 0, trainee_1: 60, trainee_3: 25, trainee_4: 20, trainee_5: 15, trainee_6: 10)

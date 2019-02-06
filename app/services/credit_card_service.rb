@@ -11,9 +11,10 @@ class CreditCardService
 	end
 
 	def self.create_charge (customer,current_user,session)
+		price = SessionPriceService.get_price(session)
 		Stripe::Charge.create(
 			customer: customer.id,
-			amount: 100 * 100,
+			amount: price * 100,
 			currency: 'SEK',
 			capture: false,
 			description: "#{current_user.first_name} #{current_user.last_name}
@@ -21,8 +22,8 @@ class CreditCardService
 		)
 	end
 
-	def self.capture(transaction)
-		CreditCardService.capture_charge(transaction)
+	def self.capture(transaction, session)
+		CreditCardService.capture_charge(transaction, session)
 	end
 
 	def self.get_token(params)
@@ -35,11 +36,15 @@ class CreditCardService
 
 	private
 
-	def self.capture_charge(transaction)
+	def self.capture_charge(transaction, session)
 		charge = Stripe::Charge.retrieve(transaction.stripe_id)
-		charge.capture
+		price = SessionPriceService.get_price(session)
+		# charge.amount = price * 100
+		# charge.save
+		charge.capture(amount: price * 100)
 		transaction = Transaction.find_by_id(transaction.id)
 		transaction.update_attribute(:payment_status, true)
+		transaction.update_attribute(:amount, price)
 	end
 
 end
