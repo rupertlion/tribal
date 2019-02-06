@@ -5,12 +5,12 @@
 
 // videocall
 
-const handleFail = () => {
-	console.log("Error: ", err);
-}
+let handleFail = () => {
+	console.log("Error : ", err);
+};
 
-let remoteContainer = document.getElementById("#remote-container");
-let canvasContainer = document.getElementById("#canvas-container");
+let remoteContainer = document.getElementById("remote-container");
+let canvasContainer = document.getElementById("canvas-container");
 
 const addVideoStream = (streamId) => {
 	let streamDiv = document.createElement("div");
@@ -19,7 +19,7 @@ const addVideoStream = (streamId) => {
 	remoteContainer.appendChild(streamDiv);
 }
 
-const removeVideoStream = () => {
+const removeVideoStream = (evt) => {
 	let stream = evt.stream;
 	stream.stop();
 	let remDiv = document.getElementById(stream.getId());
@@ -33,16 +33,16 @@ const addCanvas = (streamId) => {
 	canvasContainer.appendChild(canvas);
 	let ctx = canvas.getContext("2d");
 
-	video.addEventListener("loadedmetadata", event => {
+	video.addEventListener("loadedmetadata", () => {
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 	});
 
-	video.addEventListener('play', event => {
+	video.addEventListener('play', () => {
 		let $this = this;
-		const loop = () => {
+		let loop = () => {
 			if (!$this.paused && !$this.ended) {
-				if ($this.width !== canvas.width) {
+				if ($this.widows !== canvas.width) {
 					canvas.width = video.videoWidth;
 					canvas.height = video.videoHeight;
 				}
@@ -50,19 +50,19 @@ const addCanvas = (streamId) => {
 				setTimeout(loop, 1000 / 30);
 			}
 		}
-	});
+	}, 0);
 }
 
-let client = AgoraRTC.createClient({
+const client = AgoraRTC.createClient({
 	mode: 'live',
 	codec:'h264'
 });
 
 client.init('9fe6d9bebd0c49e48096c8d67c584ac2', () => {
-	consol.log('Client initialized!')
+	console.log('Client initialized!')
 });
 
-client.join(null, 'Tribal', (uid) => {
+client.join(null, 'Tribal', null, (uid) => {
 	let localStream = AgoraRTC.createStream({
 		streamID: uid,
 		audio: false,
@@ -86,8 +86,8 @@ client.join(null, 'Tribal', (uid) => {
 		});
 
 		client.on('stream-removed', removeVideoStream);
-	}, handleFail)
-}, handleFail); 
+	},handleFail)
+},handleFail); 
 
 // stripe
 
