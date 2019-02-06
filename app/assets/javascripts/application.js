@@ -5,6 +5,10 @@
 
 // videocall
 
+const testing = () => {
+	alert('hello Hanna')
+}
+
 const handleFail = () => {
 	console.log("Error: ", err);
 }
@@ -59,10 +63,10 @@ let client = AgoraRTC.createClient({
 });
 
 client.init('9fe6d9bebd0c49e48096c8d67c584ac2', () => {
-	consol.log('Client initialized!')
+	console.log('Client initialized!')
 });
 
-client.join(null, 'Tribal', (uid) => {
+client.join(null, 'Tribal', null, (uid) => {
 	let localStream = AgoraRTC.createStream({
 		streamID: uid,
 		audio: false,
@@ -70,7 +74,7 @@ client.join(null, 'Tribal', (uid) => {
 		screen: false
 	});
 
-	localStream.init( () => {
+	localStream.init(() => {
 		localStream.play('me');
 		client.publish(localStream.handleFail);
 
@@ -80,9 +84,9 @@ client.join(null, 'Tribal', (uid) => {
 
 		client.on('stream-subscribed', (evt) => {
 			let stream = evt.stream;
-			addVideoStream(stream.getID());
-			stream.play(stream.getID());
-			addCanvas(stream.getID());
+			addVideoStream(stream.getId());
+			stream.play(stream.getId());
+			addCanvas(stream.getId());
 		});
 
 		client.on('stream-removed', removeVideoStream);
