@@ -6,7 +6,6 @@ class TransactionsController < ApplicationController
 
 	def create
 		session = Session.find(params[:session_id])
-		# user = User.find_by_id(current_user.id)
 		customer = CreditCardService.create_stripe_customer(current_user,params)
 		charge = CreditCardService.create_charge(customer,current_user,session)
 		transaction = Transaction.create(
