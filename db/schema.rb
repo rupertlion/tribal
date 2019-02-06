@@ -31,7 +31,11 @@ ActiveRecord::Schema.define(version: 2019_02_05_120014) do
   end
 
   create_table "price_tables", force: :cascade do |t|
-    t.integer "trainees"
+    t.integer "trainee_1"
+    t.integer "trainee_3"
+    t.integer "trainee_4"
+    t.integer "trainee_5"
+    t.integer "trainee_6"
     t.integer "price_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
