@@ -5,13 +5,13 @@ import AddSessionForm from "./AddSessionForm";
 const axios = require("axios");
 
 export class AddSession extends Component {
-	
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			title: "",
-			startDate: "",
-			pricePoint: 1,
+			start_date: "",
+			price_point: 1,
 			formErrors: ""
 		};
 		this.onChange = this.onChange.bind(this);
@@ -30,7 +30,7 @@ export class AddSession extends Component {
 				"X-CSRF-Token": csrfToken
 			}
         };
-        
+
 		axios
 			.post("/sessions", data, config)
 			.then(response => {
@@ -63,8 +63,8 @@ export class AddSession extends Component {
 					onSubmit={this.onSubmit}
 					onChange={this.onChange}
 					title={this.state.title}
-					startDate={this.state.startDate}
-					pricePoint={this.state.pricePoint}
+					start_date={this.state.start_date}
+					price_point={this.state.price_point}
                 />
 			</div>
 		);

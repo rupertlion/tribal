@@ -19,10 +19,18 @@ Chromedriver.set_version '2.42'
 
 chrome_options = %w[no-sandbox disable-popup-blocking disable-infobars]
 
-chrome_options << 'auto-open-devtools-for-tabs'
+chrome_options << 'headless'
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+	options = Selenium::WebDriver::Chrome::Options.new(
+		args: chrome_options
+)
+Capybara::Selenium::Driver.new(
+		app,
+		browser: :chrome,
+		options: options
+)
+
 end
 
 Cucumber::Rails::Database.javascript_strategy = :truncation
@@ -32,6 +40,10 @@ FactoryBot::SyntaxRunner.class_eval do
   include ActionDispatch::TestProcess
 end
 
+Delayed::Worker.delay_jobs do | job |
+  job.run_at && job.run_at > Time.now
+end
+
 Before '@stripe' do
   chrome_options << 'headless'
   StripeMock.start
@@ -39,5 +51,5 @@ end
 
 After '@stripe' do
   StripeMock.stop
-end 
+end
 

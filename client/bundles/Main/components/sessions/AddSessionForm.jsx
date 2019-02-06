@@ -18,27 +18,27 @@ const AddSessionForm = props => {
                 type="text"
                 className="m-4 form_field"
             />
-            
-            <label htmlFor="startDate">Date and time</label>
+
+            <label htmlFor="start_date">Date and time</label>
             <input
                 onChange={props.onChange}
-                value={props.startDate}
-                id="startDate"
-                name="session[startDate]"
+                value={props.start_date}
+                id="start_date"
+                name="session[start_date]"
                 type="datetime-local"
                 className="m-4 form_field"
             />
 
-            <label htmlFor="pricePoint">Price</label>
+            <label htmlFor="price_point">Price</label>
             <input
                 onChange={props.onChange}
-                value={props.pricePoint}
-                id="pricePoint"
-                name="session[pricePoint]"
+                value={props.price_point}
+                id="price_point"
+                name="session[price_point]"
                 type="number"
                 className="m-4 form_field"
             />
-            
+
             <button className="m-4 button" name="Submit" type="submit" >
 				Add Session
 			</button>
