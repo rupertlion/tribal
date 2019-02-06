@@ -10,21 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_172750) do
+ActiveRecord::Schema.define(version: 2019_02_05_120014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
   create_table "price_tables", force: :cascade do |t|
     t.integer "trainees"
-    t.integer "pricePoint"
+    t.integer "price_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
     t.string "title"
-    t.datetime "startDate"
+    t.datetime "start_date"
     t.datetime "end_date"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
@@ -38,6 +53,10 @@ ActiveRecord::Schema.define(version: 2019_02_02_172750) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "payment_status"
+    t.string "stripe_id"
+    t.bigint "session_id"
+    t.index ["session_id"], name: "index_transactions_on_session_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
@@ -59,5 +78,6 @@ ActiveRecord::Schema.define(version: 2019_02_02_172750) do
   end
 
   add_foreign_key "sessions", "price_tables"
+  add_foreign_key "transactions", "sessions"
   add_foreign_key "transactions", "users"
 end

@@ -15,6 +15,8 @@ gem 'devise'
 gem 'tailwindcss', '~> 0.2.0'
 gem 'omniauth-facebook'
 gem 'stripe-rails'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development, :test do
   gem 'factory_bot_rails'
@@ -27,6 +29,7 @@ group :development, :test do
 	gem 'coveralls', require: false
 	gem "selenium-webdriver"
 	gem "chromedriver-helper"
+	gem "timecop"
   gem 'launchy', '~> 2.4', '>= 2.4.3'
 	gem 'stripe-ruby-mock', '~> 2.5.4', require: 'stripe_mock'
 end
