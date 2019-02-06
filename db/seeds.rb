@@ -10,13 +10,13 @@ medium = PriceTable.create(price_point: 1, trainee_1: 120, trainee_3: 50, traine
 high = PriceTable.create(price_point: 2, trainee_1: 180, trainee_3: 75, trainee_4: 60, trainee_5: 45, trainee_6: 30)
 
 3.times do
-    Session.create(title: 'Crossfit', start_date: '2019-02-01 15:00:00', status: 0, price_table_id: low)
+    Session.create(title: 'Crossfit', start_date: '2019-02-01 15:00:00', status: 0, price_table_id: low.id)
 end
 
 3.times do
-    Session.create(title: 'Body Pump', start_date: '2019-02-01 15:00:00', status: 1, price_table_id: medium)
+    Session.create(title: 'Body Pump', start_date: '2019-02-01 15:00:00', status: 1, price_table_id: medium.id)
 end
 
 3.times do
-    Session.create(title: 'Yoga', start_date: '2019-02-01 15:00:00', status: 2, price_table_id: high)
+    Session.create(title: 'Yoga', start_date: '2019-02-01 15:00:00', status: 2, price_table_id: high.id)
 end
