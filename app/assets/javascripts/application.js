@@ -5,64 +5,65 @@
 
 // videocall
 
-let handleFail = () => {
+let remoteContainer;
+let canvasContainer;
+
+document.addEventListener('turbolinks:load', event => {
+    remoteContainer = document.getElementById("remote-container");
+    canvasContainer = document.getElementById("canvas-container");
+})
+
+let handleFail = function (err) {
 	console.log("Error : ", err);
 };
 
-let remoteContainer = document.getElementById("remote-container");
-let canvasContainer = document.getElementById("canvas-container");
-
-const addVideoStream = (streamId) => {
+function addVideoStream(streamId) {
 	let streamDiv = document.createElement("div");
 	streamDiv.id = streamId;
 	streamDiv.style.transform = "rotateY(180deg)";
 	remoteContainer.appendChild(streamDiv);
 }
 
-const removeVideoStream = (evt) => {
+function removeVideoStream(evt) {
 	let stream = evt.stream;
 	stream.stop();
 	let remDiv = document.getElementById(stream.getId());
 	remDiv.parentNode.removeChild(remDiv);
-	console.log("Remote stream is removed" + stream.getId());
+	console.log("Remote stream is removed " + stream.getId());
 }
 
-const addCanvas = (streamId) => {
-	let video = document.getElementById(`video${streamId}`);
+function addCanvas(streamId) {
 	let canvas = document.createElement("canvas");
+	canvas.id = 'canvas' + streamId;
 	canvasContainer.appendChild(canvas);
-	let ctx = canvas.getContext("2d");
+	let ctx = canvas.getContext('2d');
+	let video = document.getElementById(`video${streamId}`);
 
-	video.addEventListener("loadedmetadata", () => {
+	video.addEventListener('loadedmetadata', function () {
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 	});
 
-	video.addEventListener('play', () => {
-		let $this = this;
-		let loop = () => {
+	video.addEventListener('play', function () {
+		var $this = this;
+		(function loop() {
 			if (!$this.paused && !$this.ended) {
-				if ($this.widows !== canvas.width) {
-					canvas.width = video.videoWidth;
-					canvas.height = video.videoHeight;
-				}
 				ctx.drawImage($this, 0, 0);
 				setTimeout(loop, 1000 / 30);
 			}
-		}
+		})();
 	}, 0);
 }
 
-const client = AgoraRTC.createClient({
+let client = AgoraRTC.createClient({
 	mode: 'live',
-	codec:'h264'
+	codec: "h264"
 });
 
-client.init('9fe6d9bebd0c49e48096c8d67c584ac2', () => {
-	console.log('Client initialized!')
-});
+client.init("5b4594eea0de44a39e6a3ce3605d27b8", () => console.log("AgoraRTC client initialized"), handleFail);
 
-client.join(null, 'Tribal', null, (uid) => {
+client.join(null, "any-channel", null, (uid) => {
+
 	let localStream = AgoraRTC.createStream({
 		streamID: uid,
 		audio: false,
@@ -70,24 +71,28 @@ client.join(null, 'Tribal', null, (uid) => {
 		screen: false
 	});
 
-	localStream.init( () => {
+	localStream.init(function () {
+		
 		localStream.play('me');
-		client.publish(localStream.handleFail);
+		client.publish(localStream, handleFail);
+	
+	}, handleFail);
+}, handleFail);
 
-		client.on('stream-added', (evt) => {
-			client.subscribe(evt.stream.handleFail);
-		});
+client.on('stream-added', function (evt) {
+	client.subscribe(evt.stream, handleFail);
+});
 
-		client.on('stream-subscribed', (evt) => {
-			let stream = evt.stream;
-			addVideoStream(stream.getID());
-			stream.play(stream.getID());
-			addCanvas(stream.getID());
-		});
+client.on('stream-subscribed', function (evt) {
+	let stream = evt.stream;
+	addVideoStream(stream.getId());
+	stream.play(stream.getId());
+	addCanvas(stream.getId());
+});
 
-		client.on('stream-removed', removeVideoStream);
-	},handleFail)
-},handleFail); 
+client.on('stream-removed', removeVideoStream);
+client.on('peer-leave', removeVideoStream);
+
 
 // stripe
 
