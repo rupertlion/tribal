@@ -5,22 +5,37 @@ export class AllSessions extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			sessions: props.sessionlist.sessions,
+			sessions: props.sessionlist.sessions.sessions,
 			sessionType : props.sessionType,
-			buttonName : props.buttonName,
-			showDetails: false
+			buttonName : "",
+			showDetails: false,
+			user: props.sessionlist.sessions.user
 		};
 		this.showPage = this.showPage.bind(this);
+	}
+
+	componentDidMount() {
+		let user = this.state.user;
+		let availability = this.state.sessionType;
+		
+		if (user) {
+			if (user.role == "coach" && availability == "booked") {
+				this.setState({ buttonName: "Start" });
+			} else {
+				this.setState({ buttonName: "Join" });
+			}
+		}
 	}
 
 	showPage(event) {
 		document.location.href = '/sessions/' + event.target.value;
 	}
+
 	render() {
 		let allSessions = this.state.sessions.map(session => {
 			if (session.status === this.state.sessionType) {
 				return (
-						<SessionCard session={session} buttonName={this.state.buttonName} showPage={this.showPage} />
+					<SessionCard session={session} user={this.state.user} buttonName={this.state.buttonName} showPage={this.showPage} />
 				);
 			}
 		});
