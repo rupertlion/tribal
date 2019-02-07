@@ -35,7 +35,7 @@ export class AllSessions extends Component {
 		if (user.role === "trainee") {
 			document.location.href = '/sessions/' + event.target.value;
 		} else if (user.role === "coach") {
-			document.location.href = '/videocall';
+			document.location.href = '/startsession';
 		}
 	}
 
