@@ -40,7 +40,7 @@ function addCanvas(streamId) {
 	});
 
 	video.addEventListener('play', function () {
-		var $this = this;
+		let $this = this;
 		(function loop() {
 			if (!$this.paused && !$this.ended) {
 				ctx.drawImage($this, 0, 0);
@@ -61,7 +61,7 @@ client.join(null, "any-channel", null, (uid) => {
 
 	let localStream = AgoraRTC.createStream({
 		streamID: uid,
-		audio: false,
+		audio: true,
 		video: true,
 		screen: false
 	});

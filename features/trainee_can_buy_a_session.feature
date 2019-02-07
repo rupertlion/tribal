@@ -17,7 +17,6 @@ Feature: User can buy a subscription
 
 	Scenario: Trainee can successfully buy a subscription
 		And I am logged in as 'john@mail.com'
-		Then show me the page
 		And I click 'Book'
 		And I click 'Buy Session'
 		And I fill in the payment form
