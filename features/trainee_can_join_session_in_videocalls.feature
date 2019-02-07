@@ -22,6 +22,7 @@ Feature: Trainee can join session in Videocalls
 
     Scenario: Trainee can join session in Videocalls
         Given I click 'Join'
+        Then show me the page
         And I should see 'My feed'
         And I should see 'Remote feeds'
         And I should see 'Canvas feed'

@@ -19,10 +19,14 @@ export class AllSessions extends Component {
 		let availability = this.state.sessionType;
 		
 		if (user) {
-			if (user.role === "coach" && availability === "booked" && availability === "full") {
+			if (user.role === "coach" && availability === "booked") {
+				this.setState({ buttonName: "Start" });
+			} else if (user.role === "coach" && availability === "full") {
 				this.setState({ buttonName: "Start" });
 			} else if (user.role === "trainee" && availability === "available") {
 				this.setState({ buttonName: "Book" });
+			} else if (user.role === "trainee" && availability === "full") {
+				this.setState({ buttonName: "Join" });
 			} else {
 				this.setState({ buttonName: "Join" });
 			}
@@ -32,10 +36,11 @@ export class AllSessions extends Component {
 	showPage(event) {
 		let user = this.state.user;
 		let availability = this.state.sessionType;
+		debugger;
 
 		if (user.role === "trainee" && availability === "available") {
 			document.location.href = '/sessions/' + event.target.value;
-		} else if (user.role === "trainee" && availability === "booked" && availability === "full"){
+		} else if (user.role === "trainee" && availability === "booked" || availability === "full") {
 			document.location.href = '/startsession';
 		} else if (user.role === "coach") {
 			document.location.href = '/startsession';
