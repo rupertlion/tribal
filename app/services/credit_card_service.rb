@@ -39,8 +39,6 @@ class CreditCardService
 	def self.capture_charge(transaction, session)
 		charge = Stripe::Charge.retrieve(transaction.stripe_id)
 		price = SessionPriceService.get_price(session)
-		# charge.amount = price * 100
-		# charge.save
 		charge.capture(amount: price * 100)
 		transaction = Transaction.find_by_id(transaction.id)
 		transaction.update_attribute(:payment_status, true)

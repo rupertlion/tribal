@@ -54,5 +54,18 @@ Given("the time is {int} {int} {int} {int}:{int}:{int}") do |int, int2, int3, in
 end
 
 Given("the job runs") do
-	Delayed::Worker.new.run( Delayed::Job.find(1))
+	Delayed::Worker.new.run(Delayed::Job.last)
+end
+
+Then("the amount is {int}") do |amount|
+	user = User.find_by(first_name: 'John')
+	transaction = Transaction.find_by(user_id: user.id)
+	expect(transaction.amount).to equal amount
+end
+
+Then("three more trainees attend") do
+	session = Session.find_by(title: 'Crossfit')
+	session.users << User.find_by(first_name: 'John2')
+	session.users << User.find_by(first_name: 'John3')
+	session.users << User.find_by(first_name: 'John4')
 end
