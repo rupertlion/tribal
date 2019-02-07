@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 	match 'register', to: 'main#index', via: [:get]
   match 'login', to: 'main#index', via: [:get]
   match 'addsession', to: 'main#index', via: [:get, :post]
+  match 'startsession', to: 'main#index', via: [:get]
 end

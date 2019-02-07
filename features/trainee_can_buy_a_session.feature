@@ -20,8 +20,6 @@ Feature: User can buy a subscription
 		And the following sessions exist
 			| title    | start_date          | end_date            | status    | price_table_id |
 			| Crossfit | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | available | 1              |
-
-
 		And the time is 2019 1 30 10:00:00
 
 	Scenario: Trainee can successfully buy a subscription
