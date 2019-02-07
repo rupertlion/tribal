@@ -9,7 +9,7 @@ export class AllSessions extends Component {
 			sessionType : props.sessionType,
 			buttonName : "",
 			showDetails: false,
-			user: props.sessionlist.sessions.user
+			user: props.sessionlist.sessions.user,
 		};
 		this.showPage = this.showPage.bind(this);
 	}
@@ -36,14 +36,13 @@ export class AllSessions extends Component {
 	showPage(event) {
 		let user = this.state.user;
 		let availability = this.state.sessionType;
-		debugger;
 
 		if (user.role === "trainee" && availability === "available") {
 			document.location.href = '/sessions/' + event.target.value;
 		} else if (user.role === "trainee" && availability === "booked" || availability === "full") {
-			document.location.href = '/startsession';
+			document.location.href = '/startsession/' + event.target.value;
 		} else if (user.role === "coach") {
-			document.location.href = '/startsession';
+			document.location.href = '/startsession/' + event.target.value;
 		}
 	}
 
