@@ -56,3 +56,7 @@ end
 Given("the job runs") do
 	Delayed::Worker.new.run( Delayed::Job.find(1))
 end
+
+Given("I have booked the session") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
