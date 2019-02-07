@@ -19,7 +19,7 @@ export class AllSessions extends Component {
 		let availability = this.state.sessionType;
 		
 		if (user) {
-			if (user.role == "coach" && availability == "booked") {
+			if (user.role == "coach" && availability == "booked" || availability == "full") {
 				this.setState({ buttonName: "Start" });
 			} else if (user.role == "trainee" && availability == "available") {
 				this.setState({ buttonName: "Book" });
