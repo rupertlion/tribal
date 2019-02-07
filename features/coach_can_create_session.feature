@@ -13,9 +13,9 @@ Feature: Coach can create session
 			| high        | 180       | 75        | 60        | 45        | 30        |
 
 		And the following user exists
-			| email             | password | password_confirmation | first_name       | last_name |
-			| coach@email.com   | password | password              | Coach-Jon        | Doe       |
-			| trainee@email.com | password | password              | CoTraineeach-Jon | Doe       |
+			| email             | password | password_confirmation | first_name       | last_name | role    |
+			| coach@email.com   | password | password              | Coach-Jon        | Doe       | coach   |
+			| trainee@email.com | password | password              | CoTraineeach-Jon | Doe       | trainee |
 
 		And I visit the site
 

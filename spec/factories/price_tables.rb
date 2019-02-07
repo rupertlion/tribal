@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :price_table do
-    trainee_1 { 60 }
+		trainee_1 { 60 }
+		trainee_2 { 60 }
     trainee_3 { 25 }
     trainee_4 { 20 }
     trainee_5 { 15 }

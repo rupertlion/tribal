@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_190539) do
 
   create_table "price_tables", force: :cascade do |t|
     t.integer "trainee_1"
+    t.integer "trainee_2"
     t.integer "trainee_3"
     t.integer "trainee_4"
     t.integer "trainee_5"
