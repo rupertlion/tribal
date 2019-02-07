@@ -7,6 +7,8 @@ RSpec.describe PriceTable, type: :model do
     it { is_expected.to have_db_column :trainee_4 }
     it { is_expected.to have_db_column :trainee_5 }
     it { is_expected.to have_db_column :trainee_6 }
+    it { is_expected.to have_db_column :trainee_7 }
+    it { is_expected.to have_db_column :trainee_8 }
     it { is_expected.to have_db_column :price_point }
   end
 
@@ -16,6 +18,8 @@ RSpec.describe PriceTable, type: :model do
     it { is_expected.to validate_presence_of :trainee_4 }
     it { is_expected.to validate_presence_of :trainee_5 }
     it { is_expected.to validate_presence_of :trainee_6 }
+    it { is_expected.to validate_presence_of :trainee_7 }
+    it { is_expected.to validate_presence_of :trainee_8 }
 		it { is_expected.to validate_presence_of :price_point }
   end
 

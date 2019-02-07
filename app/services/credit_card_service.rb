@@ -44,7 +44,7 @@ class CreditCardService
 
 	end
 
-	def update_transaction(transaction)
+	def self.update_transaction(transaction)
 		transaction.update_attribute(:payment_status, true)
 		transaction.update_attribute(:amount, price)
 	end

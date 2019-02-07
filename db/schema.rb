@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2019_02_06_190539) do
     t.integer "trainee_4"
     t.integer "trainee_5"
     t.integer "trainee_6"
+    t.integer "trainee_7"
+    t.integer "trainee_8"
     t.integer "price_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
