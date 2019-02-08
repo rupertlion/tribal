@@ -10,7 +10,6 @@ export class StartSession extends Component {
 
 	componentDidMount() {
 		let remoteContainer = document.getElementById('remote-container');
-		let canvasContainer = document.getElementById('canvas-container');
 
 		let handleFail = function (err) {
 			console.log("Error : ", err);

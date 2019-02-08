@@ -9,18 +9,20 @@ Feature: Trainee can join session in Videocalls
 	Background:
 
 		Given the following user exists
-			| email             | password | password_confirmation | first_name  | last_name | role    |
-			| coach@email.com   | password | password              | Coach-Jon   | Doe       | coach   |
-			| trainee@email.com | password | password              | Trainee-Jon | Doe       | trainee |
+			| email             | password | password_confirmation | first_name | last_name | role    |
+			| coach@email.com   | password | password              | Jack       | Doe       | coach   |
+			| trainee@email.com | password | password              | Jon        | Doe       | trainee |
 
 		And the following sessions exist
 			| title    | start_date          | end_date            | status    |
 			| Crossfit | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | confirmed |
 
+		And coach Jack has created the session
+		And trainee Jon buys a session
 		And I am logged in as 'trainee@email.com'
-		And I visit the site
 
 	Scenario: Trainee can join session in Videocalls
-		Given I click 'Join'
+		Given I click 'Join' within 'confirmed'
+		And I click 'Join Session'
 		And I should see 'My feed'
 		And I should see 'Remote feeds'

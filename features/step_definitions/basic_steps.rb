@@ -27,6 +27,7 @@ end
 Given("I set the date and time") do
     fill_in 'session[start_date]', with: Time.new()
 end
+
 Given('I fill in the payment form') do
   card_no = '42'
   stripe_iframe = find("iframe[name='__privateStripeFrame4']", visible: false)
@@ -64,4 +65,21 @@ Then("three more trainees attend") do
 	session.users << User.find_by(first_name: 'John2')
 	session.users << User.find_by(first_name: 'John3')
 	session.users << User.find_by(first_name: 'John4')
+end
+
+
+Given("coach Jack has created the session") do
+	session = Session.find_by(title: 'Crossfit')
+  session.users << User.find_by(first_name: 'Jack')
+end
+
+Given("I click {string} within {string}") do |button, dom|
+	within("div##{dom}") do
+		click_on button
+  end
+end
+
+Given("trainee Jon buys a session") do
+	session = Session.find_by(title: 'Crossfit')
+  session.users << User.find_by(first_name: 'Jon')
 end
