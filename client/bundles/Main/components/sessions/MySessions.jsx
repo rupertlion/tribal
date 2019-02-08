@@ -3,7 +3,7 @@ import SessionCard from './SessionCard';
 
 
 export class MySessions extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
 		this.state = {
 			user: props.sessions.user,
@@ -23,17 +23,19 @@ export class MySessions extends Component {
 		if (user.role === "trainee") {
 			document.location.href = '/sessions/' + event.target.value;
 		} else if (user.role === "coach") {
-			document.location.href = '/startsession';
+			document.location.href = '/startsession?sessionId=' + event.target.value;
 		}
 	}
 	render() {
 		let mySessions
-		if(this.state.mysessions) {
+		if (this.state.mysessions) {
 			mySessions = this.state.mysessions.map(session => {
-					return (
-						<SessionCard session={session} user={this.state.user} buttonName='Join' showPage={this.showPage} />
-					);
-				}
+				return (
+					<SessionCard session={session} user={this.state.user}
+						buttonName={this.state.user.role == 'coach' ? 'Start Session' : 'Join Session'}
+						showPage={this.showPage} />
+				);
+			}
 			);
 		} else {
 			mySessions = "You haven't booked a session yet!"
@@ -42,7 +44,7 @@ export class MySessions extends Component {
 			<div className="text-white text-center">
 				<h1>My booked sessions:</h1>
 				<div>
-				{mySessions}
+					{mySessions}
 				</div>
 			</div>
 		)

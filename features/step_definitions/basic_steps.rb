@@ -20,10 +20,6 @@ Given("I fill in {string} field with {string}") do |element, value|
 	fill_in element, with: value
 end
 
-Given("show me the page") do
-	save_and_open_page
-end
-
 When("I select {string} from {string}") do |option, selection|
   select option, from: selection
 end
@@ -81,4 +77,9 @@ Given("I click {string} within {string}") do |button, dom|
 	within("div##{dom}") do
 		click_on button
   end
+end
+
+Given("trainee Jon buys a session") do
+	session = Session.find_by(title: 'Crossfit')
+  session.users << User.find_by(first_name: 'Jon')
 end

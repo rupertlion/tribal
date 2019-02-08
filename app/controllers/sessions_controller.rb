@@ -7,8 +7,10 @@ class SessionsController < ApplicationController
 		end
 		session = Session.find(params[:id])
 		price = SessionPriceService.get_price(session)
+		channel_name = session.channel_name
 		@session_props = {session: session,coach: session.users.coach,
-											members:session.users.trainee, user: user, price: price}
+											members:session.users.trainee, user: user, price: price,
+											channel_name: channel_name}
     end
 
 		def create
@@ -16,6 +18,8 @@ class SessionsController < ApplicationController
         @session = Session.new(session_params.except(:price_point).merge(price_table_id: pt.id))
         @session.save
 				if @session.persisted?
+					@session.set_channel_name
+					@session.save
 					@session.users << current_user
             redirect_to root_path
         else
@@ -26,6 +30,8 @@ class SessionsController < ApplicationController
     private
 
     def session_params
-        params.require(:session).permit(:title, :start_date, :price_point)
-    end
+			params.require(:session).permit(:title, :start_date, :price_point)
+		end
+
+
 end

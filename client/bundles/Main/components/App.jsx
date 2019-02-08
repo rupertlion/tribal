@@ -16,8 +16,8 @@ function App(props) {
 					<Route exact path ='/register' render={() => <Registration />} />;
 					<Route exact path ='/login' render={() => <Login />} />;
 					<Route exact path ='/addsession' render={() => <AddSession />} />;
-					<Route exact path ='/startsession' render={() => <StartSession />} />;
 					<Route exact path ='/mysessions' render={() => <MySessions sessions={props}/>} />;
+					<Route exact path ='/startsession' render={() => <StartSession sessions={props} />} />;
 				</Switch>
 			</BrowserRouter>
 		</div>

@@ -15,7 +15,7 @@ Feature: Coach creates and starts videocall for session
 
 		And the following user exists
 			| email             | password | password_confirmation | first_name  | last_name | role    |
-			| coach@email.com   | password | password              | Jack   | Doe       | coach   |
+			| coach@email.com   | password | password              | Jack        | Doe       | coach   |
 			| trainee@email.com | password | password              | Trainee-Jon | Doe       | trainee |
 
 		And the following sessions exist
@@ -23,12 +23,10 @@ Feature: Coach creates and starts videocall for session
 			| Crossfit | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | confirmed |
 
 		And coach Jack has created the session
-
 		And I am logged in as 'coach@email.com'
-		And I visit the site
 
 	Scenario: Videocall gets added to session
-		Given I click 'Start'
+		Given I click 'Join' within 'confirmed'
+		And I click 'Start Session'
 		And I should see 'My feed'
 		And I should see 'Remote feeds'
-		And I should see 'Canvas feed'

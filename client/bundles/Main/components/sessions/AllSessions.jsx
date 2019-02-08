@@ -16,12 +16,7 @@ export class AllSessions extends Component {
 	}
 
 	showPage(event) {
-		let user = this.state.user;
-		if (user.role === "trainee") {
-			document.location.href = '/sessions/' + event.target.value;
-		} else if (user.role === "coach") {
-			document.location.href = '/startsession';
-		}
+		document.location.href = '/sessions/' + event.target.value;
 	}
 
 	render() {
