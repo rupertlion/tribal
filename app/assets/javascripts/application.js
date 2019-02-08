@@ -55,7 +55,7 @@ let client = AgoraRTC.createClient({
 	codec: "h264"
 });
 
-client.init("5b4594eea0de44a39e6a3ce3605d27b8", () => console.log("AgoraRTC client initialized"), handleFail);
+client.init("e7571501081d4ce68ec9564f6c8cd8aa", () => console.log("AgoraRTC client initialized"), handleFail);
 
 client.join(null, "any-channel", null, (uid) => {
 
@@ -67,10 +67,10 @@ client.join(null, "any-channel", null, (uid) => {
 	});
 
 	localStream.init(function () {
-		
+
 		localStream.play("me");
 		client.publish(localStream, handleFail);
-	
+
 	}, handleFail);
 }, handleFail);
 

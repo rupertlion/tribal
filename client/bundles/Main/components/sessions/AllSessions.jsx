@@ -17,7 +17,7 @@ export class AllSessions extends Component {
 	componentDidMount() {
 		let user = this.state.user;
 		let availability = this.state.sessionType;
-		
+
 		if (user) {
 			if (user.role === "coach" && availability === "booked") {
 				this.setState({ buttonName: "Start" });
@@ -40,9 +40,9 @@ export class AllSessions extends Component {
 		if (user.role === "trainee" && availability === "available") {
 			document.location.href = '/sessions/' + event.target.value;
 		} else if (user.role === "trainee" && availability === "booked" || availability === "full") {
-			document.location.href = '/startsession/' + event.target.value;
+			document.location.href = '/startsession?=' + event.target.value;
 		} else if (user.role === "coach") {
-			document.location.href = '/startsession/' + event.target.value;
+			document.location.href = '/startsession?=' + event.target.value;
 		}
 	}
 
