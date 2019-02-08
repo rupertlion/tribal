@@ -4,7 +4,7 @@ export class StartSession extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-            session: props.session
+            channel_name: props.sessions.channel_name
 		};
 		}
 
@@ -60,8 +60,8 @@ export class StartSession extends Component {
         });
 
         client.init("e7571501081d4ce68ec9564f6c8cd8aa", () => console.log("AgoraRTC client initialized"), handleFail);
-				debugger;
-        client.join(null, "any-channel", null, (uid) => {
+
+        client.join(null, this.state.channel_name, null, (uid) => {
 
             let localStream = AgoraRTC.createStream({
                 streamID: uid,

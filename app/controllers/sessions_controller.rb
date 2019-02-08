@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
 			user = current_user
 		end
 		session = Session.find(params[:id])
-		@session_props = {session: session, user: user}
+		channel_name = session.channel_name
+		@session_props = {session: session, user: user, channel_name: channel_name}
     end
 
 		def create
@@ -26,6 +27,8 @@ class SessionsController < ApplicationController
     private
 
     def session_params
-        params.require(:session).permit(:title, :start_date, :price_point)
-    end
+			params.require(:session).permit(:title, :start_date, :price_point)
+		end
+
+
 end

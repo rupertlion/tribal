@@ -39,10 +39,10 @@ export class AllSessions extends Component {
 		let user = this.state.user;
 		let availability = this.state.sessionType;
 
-		if (user.role === "trainee" && availability === "available") {
+		if (user.role === "trainee" && availability === "scheduled") {
 			document.location.href = '/sessions/' + event.target.value;
 		} else if (user.role === "trainee" && availability === "confirmed" || availability === "full") {
-			document.location.href = '/startsession?=' + event.target.value;
+			document.location.href = '/startsession?sessionId=' + event.target.value;
 		} else if (user.role === "coach") {
 			document.location.href = '/startsession?=' + event.target.value;
 		}
