@@ -29,4 +29,3 @@ Feature: Coach creates and starts videocall for session
 		Given I click 'Start'
 		And I should see 'My feed'
 		And I should see 'Remote feeds'
-		And I should see 'Canvas feed'

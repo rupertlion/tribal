@@ -44,7 +44,7 @@ export class AllSessions extends Component {
 		} else if (user.role === "trainee" && availability === "confirmed" || availability === "full") {
 			document.location.href = '/startsession?sessionId=' + event.target.value;
 		} else if (user.role === "coach") {
-			document.location.href = '/startsession?=' + event.target.value;
+			document.location.href = '/startsession?sessionId=' + event.target.value;
 		}
 	}
 

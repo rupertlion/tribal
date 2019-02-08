@@ -7,6 +7,7 @@ User.destroy_all
 	FactoryBot.create(:user)
 end
 User.create(first_name: 'Jack', last_name: 'Coach', email: 'coach@mail.com', password: 'password', role: 1)
+User.create(first_name: 'Jon', last_name: 'Trainee', email: 'trainee@mail.com', password: 'password', role: 0)
 
 low = PriceTable.create(price_point: 0, trainee_1: 20,trainee_2: 20, trainee_3: 7, trainee_4: 6, trainee_5: 5, trainee_6: 4.5, trainee_7: 4, trainee_8: 3.5)
 medium = PriceTable.create(price_point: 1, trainee_1: 25,trainee_2: 25, trainee_3: 9, trainee_4: 7, trainee_5: 6, trainee_6: 5, trainee_7: 4.5, trainee_8: 4)

@@ -20,10 +20,6 @@ Given("I fill in {string} field with {string}") do |element, value|
 	fill_in element, with: value
 end
 
-Given("show me the page") do
-	save_and_open_page
-end
-
 When("I select {string} from {string}") do |option, selection|
   select option, from: selection
 end
@@ -68,8 +64,4 @@ Then("three more trainees attend") do
 	session.users << User.find_by(first_name: 'John2')
 	session.users << User.find_by(first_name: 'John3')
 	session.users << User.find_by(first_name: 'John4')
-end
-
-Given("I have booked the session") do
-  
 end
