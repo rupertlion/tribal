@@ -23,21 +23,19 @@ Feature: User can buy a subscription
 			| Crossfit | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | scheduled | 1              |
 
 		And coach Jack has created the session
-
 		And the time is 2019 1 30 10:00:00
 
 	Scenario: Trainee can successfully buy a subscription
 		And I am logged in as 'john@mail.com'
-		And I click 'Book'
+		And I click 'Book' within 'scheduled'
 		And I click 'Buy Session'
 		And I fill in the payment form
 		And I click 'Pay'
-		Then I wait 2 seconds
-		And I should see 'You just purchased a session!'
-		And the payment status is false
+		And I wait 2 seconds
+		Then the payment status is false
 		And the amount is 60
 		And three more trainees attend
 		And the time is 2019 2 1 15:01:00
 		And the job runs
 		And the payment status is true
-		And the amount is 20
+		And the amount is 15

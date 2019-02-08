@@ -8,13 +8,8 @@ class SessionPriceService
 	private
 
 	def self.calculate_price(count, price_row)
-
 		trainee_list = ['trainee_1','trainee_2','trainee_3', 'trainee_4', 'trainee_5', 'trainee_6', 'trainee_7', 'trainee_8']
-		if count === 0
-			trainee_count = trainee_list.first
-		else
-			trainee_count = trainee_list[count-1]
-		end
+		trainee_count = trainee_list[count]
 		price_row[trainee_count]
 	end
 end

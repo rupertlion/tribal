@@ -24,7 +24,7 @@ Feature: Coach can create session
 		Given I am logged in as 'coach@email.com'
 		And I click 'Add Session'
 		Then I fill in 'session[title]' field with 'Spinning'
-		And I fill in 'session[price_point]' field with '1'
+		And I select 'Low' from 'session[price_point]'
 		And I set the date and time
 		And I click 'Add Session'
 		Then I should see 'SPINNING'

@@ -76,3 +76,9 @@ Given("coach Jack has created the session") do
 	session = Session.find_by(title: 'Crossfit')
   session.users << User.find_by(first_name: 'Jack')
 end
+
+Given("I click {string} within {string}") do |button, dom|
+	within("div##{dom}") do
+		click_on button
+  end
+end

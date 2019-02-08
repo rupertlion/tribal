@@ -25,11 +25,12 @@ export class AllSessions extends Component {
 	}
 
 	render() {
-		debugger;
 		let mySessions = [];
-		this.state.mysession.forEach(session => {
-			mySessions.push(session.id)
-		})
+		if(this.state.mysession) {
+			this.state.mysession.forEach(session => {
+				mySessions.push(session.id)
+			})
+		}
 		let allSessions = this.state.sessions.map(session => {
 			if (mySessions.includes(session.id)) {
 				return (
