@@ -142,7 +142,6 @@ input {
 .header {
     background-color: rgba(0, 0, 0, .6);
     left: 0;
-    // position: fixed;
     top: 0;
     width: 100vw;
     display: flex;
@@ -202,7 +201,6 @@ input {
 @screen md {
     #logo { width: 70px }
     #title { font-size: 50px }
-    // .content { margin-top: 100px }
     .session h1 { font-size: 45px }
     .session { font-size: 45px }
     .button { font-size: 50px }
