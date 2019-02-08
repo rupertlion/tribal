@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
 			user = current_user
 		end
 		session = Session.find(params[:id])
-		@session_props = {session: session, user: user}
+		@session_props = {session: session,coach: session.users.coach,
+											members:session.users.trainee, user: user}
     end
 
 		def create

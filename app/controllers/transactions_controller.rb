@@ -18,7 +18,7 @@ class TransactionsController < ApplicationController
 		CreditCardService.delay(run_at: session.start_date).capture(transaction, session)
 		if charge
 			SessionStatusService.update_session(session)
-			redirect_to session_path(session.id), notice: "You just purchased a session!"
+			redirect_to root_path, notice: "You just purchased a session!"
 		else
 			session.users - [current_user]
 			redirect_to session_path(session.id), notice: "Charge declined!"

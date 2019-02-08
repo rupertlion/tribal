@@ -5,7 +5,9 @@ export class ShowSession extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			session: props.session
+			session: props.session,
+			coach: props.coach,
+			members: props.members
 		};
 	this.buyStripe = this.buyStripe.bind(this);
 	}
@@ -18,6 +20,11 @@ export class ShowSession extends Component {
 		return (
 			<div  className='main_container wrapper-col' >
 				<SessionCard session={this.state.session} />
+				<div className="text-white">
+					{this.state.coach[0].first_name}
+					{this.state.members.length}
+				</div>
+
 				<div>
 				<button className='button' onClick={this.buyStripe}>
 						Buy Session
