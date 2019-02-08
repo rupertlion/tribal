@@ -1,5 +1,6 @@
 import React from 'react';
 import AllSessions from "./AllSessions";
+import MySessions from './MySessions';
 
 function MainSessionsDisplay(props) {
 	return (

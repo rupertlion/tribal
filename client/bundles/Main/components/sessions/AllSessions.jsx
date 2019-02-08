@@ -9,9 +9,7 @@ export class AllSessions extends Component {
 			sessionType : props.sessionType,
 			buttonName : "",
 			showDetails: false,
-			user: props.sessionlist.sessions.user,
-			members: props.sessionlist.members,
-			coach: props.sessionlist.coach
+			user: props.sessionlist.sessions.user
 		};
 		this.showPage = this.showPage.bind(this);
 	}
@@ -32,13 +30,7 @@ export class AllSessions extends Component {
 	}
 
 	showPage(event) {
-		let user = this.state.user;
-
-		if (user.role === "trainee") {
 			document.location.href = '/sessions/' + event.target.value;
-		} else if (user.role === "coach") {
-			document.location.href = '/startsession';
-		}
 	}
 
 	render() {
@@ -49,8 +41,6 @@ export class AllSessions extends Component {
 				);
 			}
 		});
-
-		const members = this.state.members.map(member => member.id)
 
 		return (
 			<div id={this.state.sessionType}>
