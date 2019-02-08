@@ -70,3 +70,9 @@ Then("three more trainees attend") do
 	session.users << User.find_by(first_name: 'John3')
 	session.users << User.find_by(first_name: 'John4')
 end
+
+
+Given("coach Jack has created the session") do
+	session = Session.find_by(title: 'Crossfit')
+  session.users << User.find_by(first_name: 'Jack')
+end

@@ -19,7 +19,6 @@ export class ShowSession extends Component {
 
 	render() {
 		const members = this.state.members.map(member => member.id)
-		debugger
 		return (
 			<div  className='main_container wrapper-col' >
 				<SessionCard session={this.state.session} />
