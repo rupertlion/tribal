@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-export class ShowSession extends Component {
+export class StartSession extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
             session: props.session
 		};
-    }
+		}
 
     componentDidMount() {
         let remoteContainer;
@@ -60,7 +60,7 @@ export class ShowSession extends Component {
         });
 
         client.init("e7571501081d4ce68ec9564f6c8cd8aa", () => console.log("AgoraRTC client initialized"), handleFail);
-
+				debugger;
         client.join(null, "any-channel", null, (uid) => {
 
             let localStream = AgoraRTC.createStream({
@@ -122,5 +122,5 @@ export class ShowSession extends Component {
 	}
 }
 
-export default ShowSession;
+export default StartSession;
 

@@ -34,7 +34,6 @@ const initiateStripe = () => {
 
 document.addEventListener("turbolinks:load", () => {
 	let stripeForm = document.getElementById("transaction_form");
-
 	if (stripeForm) {
 		initiateStripe();
 	}

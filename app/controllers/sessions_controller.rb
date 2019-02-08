@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
         @session = Session.new(session_params.except(:price_point).merge(price_table_id: pt.id))
         @session.save
 				if @session.persisted?
+					@session.set_channel_name
+					@session.save
 					@session.users << current_user
             redirect_to root_path
         else
