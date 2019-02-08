@@ -31,6 +31,7 @@ end
 Given("I set the date and time") do
     fill_in 'session[start_date]', with: Time.new()
 end
+
 Given('I fill in the payment form') do
   card_no = '42'
   stripe_iframe = find("iframe[name='__privateStripeFrame4']", visible: false)

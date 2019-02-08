@@ -3,9 +3,10 @@ class MainController < ApplicationController
 
   def index
     if user_signed_in?
-      user = current_user
+			user = current_user
+			mysessions = user.sessions
     end
     sessions = Session.all
-    @main_props = {sessions: sessions, user: user, mysessions: user.sessions}
+    @main_props = {sessions: sessions, user: user, mysessions: mysessions}
   end
 end
