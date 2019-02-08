@@ -7,7 +7,8 @@ export class ShowSession extends Component {
 		this.state = {
 			session: props.session,
 			coach: props.coach,
-			members: props.members
+			members: props.members,
+			user: props.user
 		};
 	this.buyStripe = this.buyStripe.bind(this);
 	}
@@ -17,6 +18,8 @@ export class ShowSession extends Component {
 	}
 
 	render() {
+		const members = this.state.members.map(member => member.id)
+		debugger
 		return (
 			<div  className='main_container wrapper-col' >
 				<SessionCard session={this.state.session} />
@@ -25,9 +28,14 @@ export class ShowSession extends Component {
 					{this.state.members.length}
 				</div>
 
-				<div>
+				<div style = {members.includes(this.state.user.id) ? {display: "none"}: {}}>
 				<button className='button' onClick={this.buyStripe}>
 						Buy Session
+				</button>
+				</div>
+				<div style = {members.includes(this.state.user.id) ? {} : {display: "none"}}>
+				<button className='button' >
+						Join Session
 				</button>
 				</div>
 			</div>

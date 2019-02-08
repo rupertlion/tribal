@@ -17,7 +17,7 @@ export class AllSessions extends Component {
 	componentDidMount() {
 		let user = this.state.user;
 		let availability = this.state.sessionType;
-		
+
 		if (user) {
 			if (user.role === "coach" && availability === "booked" || availability === "full") {
 				this.setState({ buttonName: "Start" });
