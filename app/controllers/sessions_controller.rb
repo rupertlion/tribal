@@ -6,8 +6,9 @@ class SessionsController < ApplicationController
 			user = current_user
 		end
 		session = Session.find(params[:id])
+		price = SessionPriceService.get_price(session)
 		@session_props = {session: session,coach: session.users.coach,
-											members:session.users.trainee, user: user}
+											members:session.users.trainee, user: user, price: price}
     end
 
 		def create

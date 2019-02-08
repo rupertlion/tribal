@@ -8,7 +8,8 @@ export class ShowSession extends Component {
 			session: props.session,
 			coach: props.coach,
 			members: props.members,
-			user: props.user
+			user: props.user,
+			priceList: props.price_list
 		};
 	this.buyStripe = this.buyStripe.bind(this);
 	}
@@ -21,7 +22,7 @@ export class ShowSession extends Component {
 		const members = this.state.members.map(member => member.id)
 		return (
 			<div  className='main_container wrapper-col' >
-				<SessionCard session={this.state.session} />
+				<SessionCard session={this.state.session} price={this.state.priceList} />
 				<div className="text-white">
 					{this.state.coach[0].first_name}
 					{this.state.members.length}

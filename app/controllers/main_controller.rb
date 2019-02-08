@@ -6,7 +6,11 @@ class MainController < ApplicationController
 			user = current_user
 			mysessions = user.sessions
     end
-    sessions = Session.all
+		sessions = Session.all
+		sessions.each do | session |
+			price = SessionPriceService.get_price(session)
+			session.update_attribute(:price, price)
+		end
     @main_props = {sessions: sessions, user: user, mysessions: mysessions}
   end
 end
