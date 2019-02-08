@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_06_190539) do
+ActiveRecord::Schema.define(version: 2019_02_07_182339) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -31,14 +32,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_190539) do
   end
 
   create_table "price_tables", force: :cascade do |t|
-    t.integer "trainee_1"
-    t.integer "trainee_2"
-    t.integer "trainee_3"
-    t.integer "trainee_4"
-    t.integer "trainee_5"
-    t.integer "trainee_6"
-    t.integer "trainee_7"
-    t.integer "trainee_8"
+    t.integer "trainees"
     t.integer "price_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_190539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "price_table_id"
+    t.string "videocall"
     t.index ["price_table_id"], name: "index_sessions_on_price_table_id"
   end
 

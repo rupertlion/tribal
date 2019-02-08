@@ -4,96 +4,94 @@ export class ShowSession extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-            session: props.session,
+            session: props.session
 		};
     }
 
     componentDidMount() {
-        let remoteContainer = document.getElementById("remote-container");
-        let canvasContainer = document.getElementById("canvas-container");
-        console.log(remoteContainer);
-        console.log(canvasContainer);
-    }
+        let remoteContainer;
+        let canvasContainer;
 
-    handleFail(err) {
-        console.log("Error : ", err);
-    };
+        let handleFail = function (err) {
+            console.log("Error : ", err);
+        };
 
-    addVideoStream(streamId) {
-        let streamDiv = document.createElement("div");
-        streamDiv.id = streamId;
-        streamDiv.style.transform = "rotateY(180deg)";
-        remoteContainer.appendChild(streamDiv);
-    }
+        function addVideoStream(streamId) {
+            let streamDiv = document.createElement("div");
+            streamDiv.id = streamId;
+            streamDiv.style.transform = "rotateY(180deg)";
+            remoteContainer.appendChild(streamDiv);
+        }
 
-    removeVideoStream(evt) {
-        let stream = evt.stream;
-        stream.stop();
-        let remDiv = document.getElementById(stream.getId());
-        remDiv.parentNode.removeChild(remDiv);
-        console.log("Remote stream is removed " + stream.getId());
-    }
+        function removeVideoStream(evt) {
+            let stream = evt.stream;
+            stream.stop();
+            let remDiv = document.getElementById(stream.getId());
+            remDiv.parentNode.removeChild(remDiv);
+            console.log("Remote stream is removed " + stream.getId());
+        }
 
-    addCanvas(streamId) {
-        let canvas = document.createElement("canvas");
-        canvas.id = "canvas" + streamId;
-        canvasContainer.appendChild(canvas);
-        let ctx = canvas.getContext("2d");
-        let video = document.getElementById(`video${streamId}`);
+        function addCanvas(streamId) {
+            let canvas = document.createElement("canvas");
+            canvas.id = "canvas" + streamId;
+            canvasContainer.appendChild(canvas);
+            let ctx = canvas.getContext("2d");
+            let video = document.getElementById(`video${streamId}`);
 
-        video.addEventListener("loadedmetadata", function () {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
+            video.addEventListener("loadedmetadata", function () {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+            });
+
+            video.addEventListener("play", function () {
+                let $this = this;
+                (function loop() {
+                    if (!$this.paused && !$this.ended) {
+                        ctx.drawImage($this, 0, 0);
+                        setTimeout(loop, 1000 / 30);
+                    }
+                })();
+            }, 0);
+        }
+
+        let client = AgoraRTC.createClient({
+            mode: "live",
+            codec: "h264"
         });
 
-        video.addEventListener("play", function () {
-            let $this = this;
-            (function loop() {
-                if (!$this.paused && !$this.ended) {
-                    ctx.drawImage($this, 0, 0);
-                    setTimeout(loop, 1000 / 30);
-                }
-            })();
-        }, 0);
-    }
+        client.init("e7571501081d4ce68ec9564f6c8cd8aa", () => console.log("AgoraRTC client initialized"), handleFail);
 
-    let client = AgoraRTC.createClient({
-        mode: "live",
-        codec: "h264"
-    });
+        client.join(null, "any-channel", null, (uid) => {
 
-    client.init("e7571501081d4ce68ec9564f6c8cd8aa", () => console.log("AgoraRTC client initialized"), handleFail);
+            let localStream = AgoraRTC.createStream({
+                streamID: uid,
+                audio: true,
+                video: true,
+                screen: false
+            });
 
-    client.join(null, "any-channel", null, (uid) => {
+            localStream.init(function () {
 
-        let localStream = AgoraRTC.createStream({
-            streamID: uid,
-            audio: true,
-            video: true,
-            screen: false
-        });
+                localStream.play("me");
+                client.publish(localStream, handleFail);
 
-        localStream.init(function () {
-
-            localStream.play("me");
-            client.publish(localStream, handleFail);
-
+            }, handleFail);
         }, handleFail);
-    }, handleFail);
 
-    client.on("stream-added", function (evt) {
-        client.subscribe(evt.stream, handleFail);
-    });
+        client.on("stream-added", function (evt) {
+            client.subscribe(evt.stream, handleFail);
+        });
 
-    client.on("stream-subscribed", function (evt) {
-        let stream = evt.stream;
-        addVideoStream(stream.getId());
-        stream.play(stream.getId());
-        addCanvas(stream.getId());
-    });
+        client.on("stream-subscribed", function (evt) {
+            let stream = evt.stream;
+            addVideoStream(stream.getId());
+            stream.play(stream.getId());
+            addCanvas(stream.getId());
+        });
 
-    client.on("stream-removed", removeVideoStream);
-    client.on("peer-leave", removeVideoStream);
+        client.on("stream-removed", removeVideoStream);
+        client.on("peer-leave", removeVideoStream);
+    }
 
 	render() {
 		return (
