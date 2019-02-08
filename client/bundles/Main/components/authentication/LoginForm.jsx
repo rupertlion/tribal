@@ -23,7 +23,6 @@ export default function LoginForm(props) {
 						id="email"
 						name="user[email]"
 						type="email"
-						// className="m-4"
 					/>
 					<label htmlFor="password">Password</label>
 					<input
@@ -32,7 +31,6 @@ export default function LoginForm(props) {
 						id="password"
 						name="user[password]"
 						type="password"
-						// className="m-4"
 					/>
 					<button className="button" name="Submit" type="submit">
 						Log in
