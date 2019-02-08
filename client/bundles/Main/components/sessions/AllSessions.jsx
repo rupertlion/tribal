@@ -17,11 +17,11 @@ export class AllSessions extends Component {
 	componentDidMount() {
 		let user = this.state.user;
 		let availability = this.state.sessionType;
-		
+
 		if (user) {
-			if (user.role === "coach" && availability === "booked" || availability === "full") {
+			if (user.role === "coach" && availability === "confirmed" || availability === "full") {
 				this.setState({ buttonName: "Start" });
-			} else if (user.role === "trainee" && availability === "available") {
+			} else if (user.role === "trainee" && availability === "scheduled") {
 				this.setState({ buttonName: "Book" });
 			} else {
 				this.setState({ buttonName: "Join" });
