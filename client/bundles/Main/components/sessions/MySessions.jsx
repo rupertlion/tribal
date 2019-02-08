@@ -40,7 +40,7 @@ export class MySessions extends Component {
 		}
 		return (
 			<div className="text-white text-center">
-				<h1>Hello</h1>
+				<h1>My booked sessions:</h1>
 				<div>
 				{mySessions}
 				</div>

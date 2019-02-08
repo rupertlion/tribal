@@ -9,7 +9,6 @@ export class ShowSession extends Component {
 			coach: props.coach,
 			members: props.members,
 			user: props.user,
-			priceList: props.price_list
 		};
 	this.buyStripe = this.buyStripe.bind(this);
 	}
@@ -23,11 +22,15 @@ export class ShowSession extends Component {
 		return (
 			<div  className='main_container wrapper-col' >
 				<SessionCard session={this.state.session} price={this.state.priceList} />
-				<div className="text-white">
-					{this.state.coach[0].first_name}
-					{this.state.members.length}
+				<div className="session">
+					{"Coach: " + this.state.coach[0].first_name}
 				</div>
-
+				<div className="session">
+					{"The number of participants: " + this.state.members.length +"/8"}
+				</div>
+				<p className="m-4">
+					{"Price: " + this.state.session.price + "$"}
+				</p>
 				<div style = {members.includes(this.state.user.id) ? {display: "none"}: {}}>
 				<button className='button' onClick={this.buyStripe}>
 						Buy Session
