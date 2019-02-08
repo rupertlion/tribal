@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
         pt = PriceTable.find_by(price_point: session_params[:price_point])
         @session = Session.new(session_params.except(:price_point).merge(price_table_id: pt.id))
         @session.save
-        if @session.persisted?
+				if @session.persisted?
+					@session.users << current_user
             redirect_to root_path
         else
             render json: {errors: 'Every field needs to be filled in!'}
