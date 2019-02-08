@@ -9,7 +9,9 @@ export class AllSessions extends Component {
 			sessionType : props.sessionType,
 			buttonName : "",
 			showDetails: false,
-			user: props.sessionlist.sessions.user
+			user: props.sessionlist.sessions.user,
+			members: props.sessionlist.members,
+			coach: props.sessionlist.coach
 		};
 		this.showPage = this.showPage.bind(this);
 	}
@@ -47,6 +49,8 @@ export class AllSessions extends Component {
 				);
 			}
 		});
+
+		const members = this.state.members.map(member => member.id)
 
 		return (
 			<div id={this.state.sessionType}>

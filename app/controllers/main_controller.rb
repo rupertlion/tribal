@@ -6,6 +6,7 @@ class MainController < ApplicationController
       user = current_user
     end
     sessions = Session.all
-    @main_props = {sessions: sessions, user: user}
+    @main_props = {sessions: sessions,coach: session.users.coach,
+									members:session.users.trainee, user: user}
   end
 end
