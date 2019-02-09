@@ -26,17 +26,19 @@ export class AllSessions extends Component {
 				mySessions.push(session.id)
 			})
 		}
+		let status = this.state.sessionType
 		let allSessions = this.state.sessions.map(session => {
-			if (mySessions.includes(session.id)) {
-				return (
-					<SessionCard session={session} user={this.state.user} buttonName={'Join'} showPage={this.showPage} />
-				);
-			} else {
-				return (
-					<SessionCard session={session} user={this.state.user} buttonName={'Book'} showPage={this.showPage} />
-				);
-				}
-		});
+			if(session.status === status)
+				if (mySessions.includes(session.id)) {
+					return (
+						<SessionCard session={session} user={this.state.user} buttonName={'Join'} showPage={this.showPage} />
+					);
+				} else {
+					return (
+						<SessionCard session={session} user={this.state.user} buttonName={'Book'} showPage={this.showPage} />
+					);
+					}
+			});
 
 		return (
 			<div id={this.state.sessionType}>
