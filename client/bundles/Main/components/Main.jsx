@@ -44,7 +44,7 @@ export default class Main extends React.Component {
 		return (
 			<div className='main_container'>
 				<div className='header'>
-					<img src="/app/assets/logo.png" id="logo" alt="logo" />
+					<img src="../app/assets/logo.png" id="logo" alt="logo" />
 					<p id="title_header">Tribal</p>
 				</div>
 				<div className='content wrapper-col'>
