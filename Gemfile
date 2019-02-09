@@ -18,6 +18,7 @@ gem 'stripe-rails'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'factory_bot_rails'
+gem 'rails_12factor'
 
 
 group :development, :test do
