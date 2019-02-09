@@ -2,6 +2,7 @@ import React from "react";
 import MainSessionsDisplay from "./sessions/MainSessionsDisplay";
 import MainNavLinks from "./MainNavLinks";
 import ReactOnRails from "react-on-rails";
+import logo from './logo.png'
 
 const axios = require("axios");
 
@@ -44,7 +45,7 @@ export default class Main extends React.Component {
 		return (
 			<div className='main_container'>
 				<div className='header'>
-					<img src="../app/assets/logo.png" id="logo" alt="logo" />
+					<img src={logo} id="logo" alt="logo" />
 					<p id="title_header">Tribal</p>
 				</div>
 				<div className='content wrapper-col'>
