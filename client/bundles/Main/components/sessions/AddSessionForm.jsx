@@ -32,9 +32,9 @@ const AddSessionForm = props => {
 			<label htmlFor="price_point">Price</label>
 			<select name="session[price_point]"
 				id="price_point">
-				<option value="1">Low</option>
-				<option value="2">Medium</option>
-				<option value="3">High</option>
+				<option value="0">Low</option>
+				<option value="1">Medium</option>
+				<option value="2">High</option>
 			</select>
 			{/* <input
                 onChange={props.onChange}

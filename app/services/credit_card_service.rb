@@ -15,7 +15,7 @@ class CreditCardService
 		Stripe::Charge.create(
 			customer: customer.id,
 			amount: price * 100,
-			currency: 'SEK',
+			currency: 'USD',
 			capture: false,
 			description: "#{current_user.first_name} #{current_user.last_name}
 										purchased the session: #{session.title}"
