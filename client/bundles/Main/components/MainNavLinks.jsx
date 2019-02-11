@@ -37,7 +37,7 @@ function MainNavLinks(props) {
 				</div>
 			</div>
 
-	)
+	);
 }
 
 export default MainNavLinks
