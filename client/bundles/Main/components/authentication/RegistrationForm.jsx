@@ -17,7 +17,6 @@ export default function RegistrationForm(props) {
 					id="first_name"
 					name="first_name"
 					type="text"
-					className="m-4"
 				/>
 				<label htmlFor="Last name">Last name</label>
 				<input
@@ -26,7 +25,6 @@ export default function RegistrationForm(props) {
 					id="last_name"
 					name="last_name"
 					type="text"
-					className="m-4"
 				/>
 				<label htmlFor="Email">Email</label>
 				<input
@@ -35,7 +33,6 @@ export default function RegistrationForm(props) {
 					id="email"
 					name="email"
 					type="email"
-					className="m-4"
 				/>
 				<label htmlFor="password">Password</label>
 				<input
@@ -44,7 +41,6 @@ export default function RegistrationForm(props) {
 					id="password"
 					name="password"
 					type="password"
-					className="m-4"
 				/>
 				<label htmlFor="password_confirmation">Password Confirmation</label>
 				<input
@@ -53,7 +49,6 @@ export default function RegistrationForm(props) {
 					id="password_confirmation"
 					name="password_confirmation"
 					type="password"
-					className="m-4"
 				/>
 				<input style={{ display: 'none' }} id="role" name="role" value={props.role} />
 				<button className="button" name="Submit" type="submit">
