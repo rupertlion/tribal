@@ -43,7 +43,7 @@ export class AllSessions extends Component {
 		return (
 			<div className='main_container'>
 				<div id={this.state.sessionType}>
-					<h1 className="capitalize">{this.state.sessionType} sessions</h1>
+					{/* <h1 className="capitalize">{this.state.sessionType} sessions</h1> */}
 					<div className='session_wrapper'>
 						<div>{allSessions}</div>
 					</div>

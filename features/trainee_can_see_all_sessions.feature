@@ -18,9 +18,10 @@ Feature: Trainee can see all sessions
 
 	Scenario: Trainee can view all sessions on the Home Page
 		Given I am logged in as "real@email.com"
-		Then I should see 'CROSSFIT' in 'scheduled'
-		And I should see '01/02/2019, 15:00:00' in 'scheduled'
-		And I should see 'YOGA' in 'confirmed'
-		And I should see '01/02/2019, 19:00:00' in 'confirmed'
-		And I should see 'BODY PUMP' in 'full'
-		And I should see '01/02/2019, 21:00:00' in 'full'
+		Then I should see 'Available Sessions' 
+		And I should see 'CROSSFIT'
+		And I should see '01/02/2019, 15:00:00'
+		And I should see 'YOGA'
+		And I should see '01/02/2019, 19:00:00'
+		And I should see 'BODY PUMP'
+		And I should see '01/02/2019, 21:00:00'
