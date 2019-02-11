@@ -83,3 +83,7 @@ Given("trainee Jon buys a session") do
 	session = Session.find_by(title: 'Crossfit')
   session.users << User.find_by(first_name: 'Jon')
 end
+
+Then("show me the page") do
+	save_and_open_page
+end
