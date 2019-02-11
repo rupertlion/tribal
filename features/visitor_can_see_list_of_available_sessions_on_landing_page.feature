@@ -16,6 +16,7 @@ Feature: Visitor can see all available sessions on landing page
 		Given I visit the site
 		Then I should see 'LOGIN' 
         And I should see 'REGISTER'
+		And I should see 'Available Sessions' 
         And I should see 'CROSSFIT'
 		And I should see '01/02/2019, 15:00:00'
 		And I should see 'YOGA'
