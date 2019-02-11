@@ -53,8 +53,8 @@ export default class Main extends React.Component {
 					<MainNavLinks user={this.state.user} fbLogin = {this.fbLogin} logout={this.logout} />
 					<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
 					<div style = {this.state.user? {display: "none"}:{} }>
-					<h1 className="capitalize"> Available sessions</h1>
-					<LandingPageSessionDisplay  sessions={this.state.sessions} />
+						<h1 className="capitalize"> Available sessions</h1>
+						<LandingPageSessionDisplay  sessions={this.state.sessions} />
 					</div>
 					<div style = {this.state.user? {}:{display: "none"} }>
 						<MainSessionsDisplay  sessions={this.state.sessions} />
