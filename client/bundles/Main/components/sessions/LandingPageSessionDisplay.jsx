@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import AllSessions from "./AllSessions";
 
 function LandingPageSessionDisplay(props) {
@@ -7,7 +7,7 @@ function LandingPageSessionDisplay(props) {
 			<AllSessions sessionType="scheduled" sessionlist={props} />
 			<AllSessions sessionType="confirmed" sessionlist={props} />
 		</div>
-	)
+	);
 }
 
-export default LandingPageSessionDisplay
+export default LandingPageSessionDisplay;

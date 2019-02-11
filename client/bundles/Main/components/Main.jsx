@@ -3,7 +3,7 @@ import MainSessionsDisplay from "./sessions/MainSessionsDisplay";
 import MainNavLinks from "./MainNavLinks";
 import ReactOnRails from "react-on-rails";
 import logo from './logo.png';
-import LandingPageSessionDisplay from "./sessions/LandingPageSessionDisplay"
+import LandingPageSessionDisplay from "./sessions/LandingPageSessionDisplay";
 
 const axios = require("axios");
 
