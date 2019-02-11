@@ -2,7 +2,8 @@ import React from "react";
 import MainSessionsDisplay from "./sessions/MainSessionsDisplay";
 import MainNavLinks from "./MainNavLinks";
 import ReactOnRails from "react-on-rails";
-import logo from './logo.png'
+import logo from './logo.png';
+import LandingPageSessionDisplay from "./sessions/LandingPageSessionDisplay"
 
 const axios = require("axios");
 
@@ -51,6 +52,9 @@ export default class Main extends React.Component {
 				<div className='content wrapper-col'>
 					<MainNavLinks user={this.state.user} fbLogin = {this.fbLogin} logout={this.logout} />
 					<h4 className="m-4">Hello, {this.state.user ? this.state.user.first_name : 'Stranger'}!</h4>
+					<div>
+						<LandingPageSessionDisplay  sessions={this.state.sessions} />
+					</div>
 					<div style = {this.state.user? {}:{display: "none"} }>
 						<MainSessionsDisplay  sessions={this.state.sessions} />
 					</div>
