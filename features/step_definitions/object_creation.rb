@@ -16,7 +16,7 @@ Given('the following price table exists') do |table|
   end
 end
 
-Given('the following user exists') do |table|
+Given('the following user(s) exists') do |table|
   table.hashes.each do |user|
     create(:user, user)
   end
