@@ -17,9 +17,12 @@ end
 
 Chromedriver.set_version '2.42'
 
-chrome_options = %w[no-sandbox disable-popup-blocking disable-infobars]
+chrome_options = %w[no-sandbox disable-popup-blocking disable-infobars ]
 
 chrome_options << 'headless'
+
+# Open dev tools in browser (if NOT headless) for debugging code
+# chrome_options << 'auto-open-devtools-for-tabs'
 
 Capybara.register_driver :selenium do |app|
 	options = Selenium::WebDriver::Chrome::Options.new(

@@ -22,7 +22,6 @@ Feature: Coach creates and starts videocall for session
 			| title    | start_date          | end_date            | status    | coach           |
 			| Crossfit | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | confirmed | coach@email.com |
 
-		And coach Jack has created the session
 		And I am logged in as 'coach@email.com'
 
 	Scenario: Videocall gets added to session

@@ -8,7 +8,7 @@ class MainController < ApplicationController
   def index
     if user_signed_in?
       user = current_user
-      my_sessions = user.sessions
+      my_sessions = user.coach? ? user.organised_sessions : user.sessions 
     end
     @main_props = { sessions: @sessions,
                     user: user,
