@@ -17,7 +17,6 @@ class MainController < ApplicationController
 			session.update_attribute(:price, price)
 			session.update_attribute(:coach_name, coach_name)
 		end
-		binding.pry
     @main_props = {sessions: sessions, user: user, mysessions: mysessions, channel_name: channel_name}
   end
 end

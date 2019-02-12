@@ -10,7 +10,8 @@ class User < ApplicationRecord
 	validates_presence_of :first_name, :last_name, :role
 
 	has_many :transactions
-	has_and_belongs_to_many :sessions
+  has_and_belongs_to_many :sessions
+  has_many :organised_sessions, class_name: "Session", foreign_key: "coach_id"
 
 	def self.new_with_session(params, session)
     super.tap do |user|
