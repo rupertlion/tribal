@@ -11,15 +11,16 @@ Feature: Trainee can see name of session coach
 			| real@email.com | password | password              | Jon        | Doe       | trainee |
 
 		And the following sessions exist
-			| title     | start_date          | end_date            | status    |
-			| Crossfit  | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | scheduled |
-			| Yoga      | 2019-02-01 19:00:00 | 2019-02-01 19:30:00 | confirmed |
-			| Body Pump | 2019-02-01 21:00:00 | 2019-02-01 21:30:00 | full      |
+			| title     | start_date          | end_date            | status    | coach_name	|
+			| Crossfit  | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | scheduled | Dan			|
+			| Yoga      | 2019-02-01 19:00:00 | 2019-02-01 19:30:00 | confirmed | Jack			|
+			| Body Pump | 2019-02-01 21:00:00 | 2019-02-01 21:30:00 | full      | Hanna			|
 
 	Scenario: Trainee can view all sessions on the Home Page
 		Given I am logged in as "real@email.com"
         And I should see 'CROSSFIT'
         And I should see 'Dan'
+		And show me the page
 		And I should see '01/02/2019, 15:00:00'
 		And I should see 'YOGA'
         And I should see 'Jack'

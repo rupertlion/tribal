@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_131135) do
     t.bigint "price_table_id"
     t.string "channel_name"
     t.integer "price"
+    t.string "coach_name"
     t.index ["price_table_id"], name: "index_sessions_on_price_table_id"
   end
 
