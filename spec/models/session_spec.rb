@@ -6,7 +6,7 @@ RSpec.describe Session, type: :model do
     it { is_expected.to have_db_column :start_date }
 		it { is_expected.to have_db_column :end_date }
 		it { is_expected.to have_db_column :price }
-
+    it { is_expected.to have_db_column :coach_id }
   end
 
   describe 'Validations' do
