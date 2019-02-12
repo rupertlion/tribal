@@ -21,8 +21,12 @@ RSpec.describe User, type: :model do
   end
 
   describe FactoryBot do
-    it 'should have valid Factory' do
-      expect(create(:user)).to be_valid
+    it 'should have valid Factory for :trainee' do
+      expect(create(:trainee)).to be_valid
+    end
+
+    it 'should have valid Factory for :coach' do
+      expect(create(:coach)).to be_valid
     end
 	end
 
