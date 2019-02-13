@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def create
     pt = PriceTable.find_by(price_point: params[:session][:price_point])
-    @session = Session.create(session_params.merge(price_table: pt, coach: current_user))
+    @session = current_user.organised_sessions.create(session_params.merge(price_table: pt))
     if @session.persisted?
       @session.set_channel_name
       @session.save

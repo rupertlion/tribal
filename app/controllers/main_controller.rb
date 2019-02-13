@@ -7,11 +7,10 @@ class MainController < ApplicationController
 
   def index
     if user_signed_in?
-      user = current_user
-      my_sessions = user.coach? ? user.organised_sessions : user.sessions 
+      my_sessions = current_user.coach? ? current_user.organised_sessions : current_user.sessions 
     end
     @main_props = { sessions: @sessions,
-                    user: user,
+                    user: current_user,
                     mysessions: my_sessions,
                     channel_name: @channel_name }
    end

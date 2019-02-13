@@ -2,6 +2,7 @@
 
 class Session < ApplicationRecord
   validates_presence_of :title, :start_date
+  validate :is_user_a_coach? 
   belongs_to :price_table
   belongs_to :coach, class_name: 'User'
   has_many :transactions
@@ -10,5 +11,9 @@ class Session < ApplicationRecord
 
   def set_channel_name
     self.channel_name = title + '_Channel_' + id.to_s
+  end
+
+  def is_user_a_coach?
+    errors.add(:coach, 'need to be a real Coach') unless self.coach.coach?
   end
 end
