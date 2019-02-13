@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root controller: :main, action: :index
   resources :sessions, only: [:create, :show]
   resources :transactions, only: [:new, :create]
+  resources :users, only: [:show]
 	match 'register', to: 'main#index', via: [:get]
   match 'login', to: 'main#index', via: [:get]
   match 'addsession', to: 'main#index', via: [:get, :post]

@@ -19,8 +19,7 @@ class TransactionsController < ApplicationController
 			SessionStatusService.update_session(session)
 			session.users << current_user
 			redirect_to root_path, notice: "You just purchased a session!"
-		else
-			session.users - [current_user]
+		else	
 			redirect_to session_path(session.id), notice: "Charge declined!"
 		end
 	end

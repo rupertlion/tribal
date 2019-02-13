@@ -8,7 +8,7 @@ Feature: Trainee can join session in Videocalls
 
 	Background:
 
-		Given the following user exists
+		Given the following users exists
 			| email             | password | password_confirmation | first_name | last_name | role    |
 			| coach@email.com   | password | password              | Jack       | Doe       | coach   |
 			| trainee@email.com | password | password              | Jon        | Doe       | trainee |

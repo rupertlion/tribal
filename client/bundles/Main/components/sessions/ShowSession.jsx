@@ -24,12 +24,12 @@ export class ShowSession extends Component {
 
 	render() {
 		const members = this.state.members.map(member => member.id)
-		const coach = this.state.coach.map(coach => coach.id)
+		const coach = this.state.coach
 		return (
 			<div className='main_container wrapper-col' >
 				<SessionCard session={this.state.session} price={this.state.priceList} />
 				<div className="session">
-					{"Coach: " + this.state.coach[0].first_name}
+					{"Coach: " + this.state.coach.first_name}
 				</div>
 				<div className="session">
 					{"The number of participants: " + this.state.members.length + "/8"}
@@ -38,7 +38,7 @@ export class ShowSession extends Component {
 					{"Price: " + this.state.session.price + "$"}
 				</p>
 				<div style={members.includes(this.state.user.id) ||
-					coach.includes(this.state.user.id) ? { display: "none" } : {}}>
+					coach.id === this.state.user.id ? { display: "none" } : {}}>
 					<button className='button' onClick={this.buyStripe}>
 						Buy Session
 				</button>
@@ -48,7 +48,7 @@ export class ShowSession extends Component {
 						Join Session
 				</button>
 				</div>
-				<div style={coach.includes(this.state.user.id) ? {} : { display: "none" }}>
+				<div style={coach.id === this.state.user.id ? {} : { display: "none" }}>
 					<button className='button' onClick={this.joinSession} >
 						Start Session
 				</button>

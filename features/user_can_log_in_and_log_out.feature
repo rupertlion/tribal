@@ -5,7 +5,7 @@ Feature: User can log in and out
 	I want sign up and log in
 
 	Background:
-		Given the following user exists
+		Given the following users exists
 			| email          | password | password_confirmation | first_name | last_name | role    |
 			| real@email.com | password | password              | Jon        | Doe       | trainee |
 		And I visit the site

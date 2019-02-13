@@ -6,8 +6,8 @@ Feature: User can sign up
 
 	Background:
 		Given the following user exists
-			| first_name | last_name | email         | password | password_confirmation |
-			| Hanna      | Nyman     | hanna@mail.se | password | password              |
+			| first_name | last_name | email         | password | password_confirmation | role    |
+			| Hanna      | Nyman     | hanna@mail.se | password | password              | trainee |
 		And I visit the site
 		And I click "Register"
 		And I should see 'I am a'
