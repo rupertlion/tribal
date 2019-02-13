@@ -12,7 +12,6 @@ Feature: Visitor can see current number of booked trainees
 			| John2      | Doe       | john2@mail.com | password | trainee |
 			| John3      | Doe       | john3@mail.com | password | trainee |
 			| John4      | Doe       | john4@mail.com | password | trainee |
-			| Jack       | Joe       | jack@mail.com  | password | coach   |
 
 		And the following price table exists
 			| price_point | trainee_1 | trainee_3 | trainee_4 | trainee_5 | trainee_6 | trainee_7 | trainee_8 |
@@ -20,14 +19,13 @@ Feature: Visitor can see current number of booked trainees
 
 		And the following sessions exist
 			| title    | start_date          | end_date            | status    | price_table_id |
-			| Crossfit | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | scheduled | 1              |
+			| Bodypump | 2019-02-01 15:00:00 | 2019-02-01 15:30:00 | scheduled | 1              |
 
-		And coach Jack has created the session
-		And the time is 2019 1 30 10:00:00
-	
+        And multiple trainees buy a session
+
     Scenario: Trainee can view number of trainees in session on the Home Page
-		Given I visit the site
-		And I should see 'CROSSFIT'
-		And I should see 'Jack'
+        Given I visit the site
+		And I should see 'BODYPUMP'
+		And I should see 'Jane1'
 		And I should see '01/02/2019, 15:00:00'
-		And I should see '3'
+		And I should see '4'
