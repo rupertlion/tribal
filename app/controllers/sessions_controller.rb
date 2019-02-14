@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     channel_name = session.channel_name
     @session_props = { session: session,
                       coach: session.coach,
-                      members: session.users.trainee,
+                      members: session.users,
                       user: user,
                       price: price,
                       channel_name: channel_name }

@@ -16,4 +16,8 @@ class Session < ApplicationRecord
   def is_user_a_coach?
     errors.add(:coach, 'need to be a real Coach') unless self.coach.coach?
   end
+
+  def members_count
+    binding.pry
+  end
 end

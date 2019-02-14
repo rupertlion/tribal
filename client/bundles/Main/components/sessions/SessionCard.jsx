@@ -19,8 +19,16 @@ export default class SessionCard extends Component {
 		this.setState({ coach: response.data.user })
 	}
 
+	membersCount() {
+		if (this.props.members) {
+			return this.props.members.length
+		} else {
+			return '0'
+		}
+	}
+
 	render() {
-		console.log((this.state.members))
+		// console.log((this.state))
 		return (
 			<div>
 				<div id={this.props.session.id} className="wrapper" key={this.props.session.id}>
@@ -28,7 +36,7 @@ export default class SessionCard extends Component {
 						<div id={this.props.session.id} className='session'>
 							<h1 className="session_name">{this.props.session.title}</h1>
 							<p>{"Coach name:" + this.state.coach.first_name}</p>
-							<p>{"Participants:" + this.state.members.length + "/8"}</p>
+							<p>{"Participants:" + this.membersCount() + "/8"}</p>
 							<p>{new Date(this.props.session.start_date).toLocaleString('en-GB', { h12: false })}</p>
 						</div>
 						<div style={this.props.buttonName ? {} : { display: "none" }} >
